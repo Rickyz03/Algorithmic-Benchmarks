@@ -34,7 +34,7 @@
   
   #text(16pt)[
     A Comprehensive Analysis of Dijkstra's Algorithm, \
-    Bellman-Ford Algorithm, and A* Search
+    Bellman-Ford Algorithm, and A\* Search
   ]
   
   #v(3cm)
@@ -70,7 +70,7 @@ This study implements and analyzes three classical algorithms for solving shorte
 
 - *Dijkstra's Algorithm*: The gold standard for graphs with non-negative edge weights
 - *Bellman-Ford Algorithm*: A versatile algorithm that handles negative edge weights and detects negative cycles  
-- *A* Search*: An informed search algorithm that uses heuristics to guide the search toward the goal
+- *A\* Search*: An informed search algorithm that uses heuristics to guide the search toward the goal
 
 Each algorithm represents a different approach to the problem, with distinct strengths, limitations, and computational complexities. Through systematic implementation and empirical analysis, this project aims to provide insights into their theoretical properties and practical performance characteristics.
 
@@ -91,7 +91,7 @@ The implementation is organized into modular components:
 - `graph.py`: Graph representation and test instance generation utilities
 - `dijkstra.py`: Complete implementation of Dijkstra's algorithm with performance metrics
 - `bellman_ford.py`: Bellman-Ford algorithm with negative cycle detection
-- `astar.py`: A* search for both general graphs and grid-based pathfinding
+- `astar.py`: A\* search for both general graphs and grid-based pathfinding
 - `main.py`: Comprehensive benchmarking framework with visualization capabilities
 
 = Theoretical Background
@@ -174,13 +174,13 @@ The negative cycle detection works because if a negative cycle exists, distances
 - Can be easily parallelized or distributed
 - Works with any edge ordering
 
-== A* Search Algorithm
+== A\* Search Algorithm
 
-A* (pronounced "A-star") is an informed search algorithm that uses heuristics to guide the search toward the goal more efficiently than uninformed algorithms like Dijkstra's algorithm.
+A\* (pronounced "A-star") is an informed search algorithm that uses heuristics to guide the search toward the goal more efficiently than uninformed algorithms like Dijkstra's algorithm.
 
 === Algorithm Description
 
-A* maintains two functions for each vertex $v$:
+A\* maintains two functions for each vertex $v$:
 - $g(v)$: The actual cost from the start vertex to $v$
 - $h(v)$: The heuristic estimate of cost from $v$ to the goal
 - $f(v) = g(v) + h(v)$: The estimated total cost of a path through $v$
@@ -189,18 +189,18 @@ The algorithm uses $f(v)$ to prioritize which vertices to explore, always select
 
 === Heuristic Properties
 
-For A* to guarantee optimal solutions, the heuristic function must be:
+For A\* to guarantee optimal solutions, the heuristic function must be:
 
 *Admissible*: $h(v) <= h^*(v)$ where $h^*(v)$ is the true cost from $v$ to goal
 $ h(v) <= delta(v, "goal") quad forall v in V $
 
 *Consistent (Monotonic)*: $h(u) <= w(u,v) + h(v)$ for every edge $(u,v)$
 
-When these properties hold, A* is guaranteed to find optimal solutions while exploring fewer vertices than Dijkstra's algorithm.
+When these properties hold, A\* is guaranteed to find optimal solutions while exploring fewer vertices than Dijkstra's algorithm.
 
 === Mathematical Formulation
 
-A* maintains the invariant that for any vertex $v$ in the closed set:
+A\* maintains the invariant that for any vertex $v$ in the closed set:
 $ g(v) = delta("start", v) $
 
 The algorithm terminates when the goal vertex is selected for expansion, ensuring optimality under admissible heuristics.
@@ -215,7 +215,7 @@ The algorithm terminates when the goal vertex is selected for expansion, ensurin
 
 === Grid-Specific Optimizations
 
-For grid-based pathfinding, A* commonly uses:
+For grid-based pathfinding, A\* commonly uses:
 - *Manhattan Distance*: $h((x_1, y_1), (x_2, y_2)) = |x_1 - x_2| + |y_1 - y_2|$
 - *Euclidean Distance*: $h((x_1, y_1), (x_2, y_2)) = sqrt((x_1 - x_2)^2 + (y_1 - y_2)^2)$
 
@@ -239,7 +239,7 @@ This representation provides:
 
 == Priority Queue Implementation
 
-Both Dijkstra's algorithm and A* use Python's `heapq` module, which implements a binary min-heap:
+Both Dijkstra's algorithm and A\* use Python's `heapq` module, which implements a binary min-heap:
 - `heappush()`: $O(log n)$
 - `heappop()`: $O(log n)$ 
 - Space: $O(n)$
@@ -264,7 +264,7 @@ The benchmarking framework generates diverse test cases:
 *Grid Graphs*:
 - 2D grids with configurable dimensions
 - Random obstacle placement
-- Specialized for A* pathfinding evaluation
+- Specialized for A\* pathfinding evaluation
 
 = Experimental Results and Analysis
 
@@ -282,11 +282,11 @@ _[Discussion of when to use each algorithm will be included after data analysis]
 
 = Conclusions
 
-## Summary of Findings...
+== Summary of Findings...
 
 _[Conclusions will be drawn from the experimental results]_
 
-## Future Work...
+== Future Work...
 
 _[Potential extensions and improvements will be discussed]_
 
