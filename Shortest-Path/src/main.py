@@ -6,6 +6,8 @@ This script generates various types of graphs, runs all three algorithms
 visualizations of the results.
 """
 
+OUTPUT_DIR = "output"
+
 import time
 import random
 import pandas as pd
@@ -368,7 +370,7 @@ def create_performance_visualizations(df: pd.DataFrame) -> None:
         ax4.set_title('Path Cost Correlation\n(Should be on diagonal)')
     
     plt.tight_layout()
-    plt.savefig('algorithm_performance.png', dpi=300, bbox_inches='tight')
+    plt.savefig(OUTPUT_DIR + 'algorithm_performance.png', dpi=300, bbox_inches='tight')
     plt.show()
 
 
@@ -407,7 +409,7 @@ def create_grid_visualizations(df_grid: pd.DataFrame) -> None:
     cbar2.set_label('Grid Size')
     
     plt.tight_layout()
-    plt.savefig('grid_performance.png', dpi=300, bbox_inches='tight')
+    plt.savefig(OUTPUT_DIR + 'grid_performance.png', dpi=300, bbox_inches='tight')
     plt.show()
 
 
@@ -422,8 +424,8 @@ def main():
     df_grid = run_grid_benchmarks()
     
     # Save results to CSV
-    df_results.to_csv('graph_benchmark_results.csv', index=False)
-    df_grid.to_csv('grid_benchmark_results.csv', index=False)
+    df_results.to_csv(OUTPUT_DIR + 'graph_benchmark_results.csv', index=False)
+    df_grid.to_csv(OUTPUT_DIR + 'grid_benchmark_results.csv', index=False)
     
     print(f"\nBenchmark completed!")
     print(f"Graph results: {len(df_results)} test cases")
