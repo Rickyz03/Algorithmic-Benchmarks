@@ -6,7 +6,7 @@ This script generates various types of graphs, runs all three algorithms
 visualizations of the results.
 """
 
-OUTPUT_DIR = "output"
+OUTPUT_DIR = "output/"
 
 import time
 import random
