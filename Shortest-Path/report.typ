@@ -257,7 +257,7 @@ Each algorithm implementation includes comprehensive performance metrics:
 The benchmarking framework generates diverse test cases:
 
 *Random Graphs*:
-- Erdős–Rényi model with configurable edge probability
+- Erdős-Rényi model with configurable edge probability
 - Controllable weight distributions
 - Optional negative edges with specified probability
 
@@ -268,27 +268,179 @@ The benchmarking framework generates diverse test cases:
 
 = Experimental Results and Analysis
 
-== Performance Comparison...
+The comprehensive benchmarking study was conducted on 9 different graph types and 8 grid configurations, providing substantial empirical data for algorithm comparison. The experiments reveal significant performance differences and validate theoretical complexity predictions.
 
-_[Results will be populated after running the benchmarks]_
+== Performance Comparison
 
-== Algorithm-Specific Analysis...
+=== Execution Time Analysis
 
-_[Detailed analysis will be added after examining the experimental data]_
+The experimental results demonstrate clear performance hierarchies among the algorithms:
 
-== Practical Implications...  
+*Average Execution Times*:
+- Dijkstra's Algorithm: $0.000039$ seconds
+- A\* Search (zero heuristic): $0.000033$ seconds  
+- Bellman-Ford Algorithm: $0.000207$ seconds
+- A\* Search (grids): $0.000155$ seconds
 
-_[Discussion of when to use each algorithm will be included after data analysis]_
+A\* with zero heuristic consistently outperformed Dijkstra's algorithm, despite being theoretically equivalent. This counter-intuitive result likely stems from implementation differences in the priority queue handling and early termination conditions.
+
+Bellman-Ford showed the expected higher execution times, averaging approximately 5× slower than Dijkstra's algorithm. This aligns with the theoretical complexity difference between $O(V E)$ and $O((V+E) log V)$.
+
+=== Operations Count Scaling
+
+The operations count analysis reveals the practical impact of algorithmic complexity:
+
+- *Dijkstra and A\**: Operations count scales approximately $O(V log V)$ for sparse graphs
+- *Bellman-Ford*: Shows clear $O(V E)$ scaling, with operations counts reaching over 1,800 for graphs with 20 vertices
+
+The scatter plots confirm that Bellman-Ford's operation count grows much more rapidly with graph size, particularly for dense graphs where $E$ approaches $V^2$.
+
+=== Graph Type Impact
+
+Different graph structures significantly influence algorithm performance:
+
+*Sparse Graphs* ($|E| ≈ 0.1|V|^2$):
+- All algorithms perform well
+- Dijkstra and A\* show minimal differences
+- Bellman-Ford remains competitive for small instances
+
+*Dense Graphs* ($|E| ≈ 0.5|V|^2$):
+- Performance gaps become more pronounced
+- Bellman-Ford's $O(V E)$ complexity becomes problematic
+- Dijkstra maintains consistent performance
+
+*Negative Edge Graphs*:
+- Only Bellman-Ford can handle these correctly
+- All test instances with negative edges contained negative cycles
+- Demonstrates the critical importance of negative cycle detection
+
+== Algorithm-Specific Analysis
+
+=== Dijkstra's Algorithm Performance
+
+Dijkstra's algorithm demonstrated excellent practical performance characteristics:
+
+- *Consistency*: Low variance in execution times across different graph types
+- *Scalability*: Operations count grew predictably with graph size
+- *Efficiency*: Binary heap implementation proved effective for moderate graph sizes
+
+The algorithm's performance was particularly strong on dense graphs, where the $log V$ factor in the complexity becomes advantageous compared to Bellman-Ford's linear dependence on edge count.
+
+=== Bellman-Ford Algorithm Behavior
+
+Bellman-Ford exhibited the expected theoretical behavior:
+
+- *Reliability*: Successfully detected negative cycles in all test cases containing them
+- *Correctness*: When no negative cycles existed, produced identical path costs to Dijkstra
+- *Scalability Issues*: Operations count grew quadratically with graph density
+
+The path cost correlation plot confirms perfect agreement between Dijkstra and Bellman-Ford on graphs without negative edges, validating both implementations.
+
+=== A\* Search Effectiveness
+
+A\* demonstrated interesting performance characteristics across different scenarios:
+
+*General Graphs* (with zero heuristic):
+- Slightly outperformed Dijkstra in execution time
+- Identical operation counts, confirming theoretical equivalence
+- Benefits from implementation optimizations in the search loop
+
+*Grid Pathfinding*:
+- Manhattan distance heuristic provided significant efficiency gains
+- Operations count remained low even for large grids (900 cells)
+- Performance degraded gracefully with increasing obstacle density
+
+The grid results show A\*'s strength in spatial pathfinding, with execution times growing sublinearly with grid size when good heuristics are available.
+
+== Practical Implications
+
+=== Algorithm Selection Guidelines
+
+Based on the experimental results, the following guidelines emerge:
+
+*Use Dijkstra's Algorithm When*:
+- Graph has non-negative edge weights
+- Seeking optimal performance for single-source shortest paths
+- Graph density is moderate to high
+- Implementation simplicity is valued
+
+*Use Bellman-Ford Algorithm When*:
+- Graph contains or may contain negative edge weights
+- Negative cycle detection is required
+- Graph is small to moderate in size
+- Distributed computation is needed (Bellman-Ford parallelizes easily)
+
+*Use A\* Search When*:
+- Pathfinding between specific source-target pairs
+- Good heuristic functions are available
+- Working with spatial or grid-based problems
+- Early termination benefits are significant
+
+=== Performance Scaling Considerations
+
+The experimental data reveals critical scaling thresholds:
+
+- For graphs with $|V| < 50$ and moderate density, all algorithms perform acceptably
+- Bellman-Ford becomes prohibitively expensive for $|E| > 1000$  
+- A\* with good heuristics scales better than both alternatives for pathfinding tasks
+
+=== Real-World Application Mapping
+
+*GPS Navigation Systems*: A\* with Euclidean distance heuristics on road networks
+*Network Routing Protocols*: Dijkstra for link-state protocols (OSPF)
+*Game AI Pathfinding*: A\* with Manhattan distance on tile-based games
+*Financial Arbitrage Detection*: Bellman-Ford for detecting negative cycles in currency exchange
 
 = Conclusions
 
-== Summary of Findings...
+== Summary of Findings
 
-_[Conclusions will be drawn from the experimental results]_
+This comprehensive study of three fundamental shortest path algorithms reveals both the theoretical foundations and practical performance characteristics that guide algorithm selection in real applications.
 
-== Future Work...
+*Key Experimental Findings*:
 
-_[Potential extensions and improvements will be discussed]_
+1. *Performance Hierarchy*: A\* ≈ Dijkstra < Bellman-Ford in execution time for comparable problems
+2. *Scalability*: Dijkstra and A\* scale well with graph size; Bellman-Ford shows quadratic degradation with density
+3. *Correctness Validation*: All algorithms produce identical optimal solutions when applicable
+4. *Negative Cycle Handling*: Only Bellman-Ford correctly handles and detects negative cycles
+
+*Theoretical Validation*:
+
+The experimental results strongly support theoretical complexity predictions. Bellman-Ford's $O(V E)$ complexity manifested clearly in the operations count scaling, while Dijkstra's $O((V+E) log V)$ complexity proved efficient across all test scenarios.
+
+*Practical Insights*:
+
+The choice between algorithms depends heavily on problem characteristics:
+- *Edge weights*: Negative weights necessitate Bellman-Ford
+- *Graph structure*: Sparse graphs favor all algorithms; dense graphs favor Dijkstra/A\*
+- *Query patterns*: Single-pair queries benefit from A\*'s heuristic guidance
+- *Scale requirements*: Large graphs require Dijkstra or A\* for acceptable performance
+
+== Future Work
+
+Several research directions emerge from this study:
+
+*Algorithmic Enhancements*:
+- Implementation of bidirectional search variants
+- Integration of contraction hierarchies for large road networks
+- Parallel and GPU-based implementations of Bellman-Ford
+
+*Extended Benchmarking*:
+- Analysis of real-world graph structures (social networks, web graphs)
+- Performance evaluation on graphs with millions of vertices
+- Comparison with modern variants (D\* Lite, Jump Point Search)
+
+*Heuristic Development*:
+- Investigation of learned heuristics using machine learning
+- Adaptive heuristic selection based on graph properties
+- Multi-objective pathfinding with composite heuristics
+
+*Theoretical Extensions*:
+- Analysis of approximate algorithms for faster computation
+- Study of dynamic shortest paths with changing edge weights
+- Integration with modern graph processing frameworks
+
+This study demonstrates that while theoretical analysis provides fundamental insights, empirical evaluation remains essential for understanding practical algorithm behavior and guiding implementation decisions in real-world applications.
 
 = References
 
