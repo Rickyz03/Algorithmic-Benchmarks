@@ -184,7 +184,7 @@ $ c'(u,v) >= 0 quad forall (u,v) in E $
       If(cond: "found", {
         Assign[$M$][$M triangle.l M'$ (augment matching)]
       }, {
-        Assign[][Call UpdateDualVariables to update $alpha, beta$]
+        [Update dual variables $alpha, beta$]
       })
     })
     Return[$M$]
@@ -233,8 +233,8 @@ The key innovation is the construction of a *layered graph* that enables finding
       Assign[$"paths"$][$emptyset$]
       For(cond: "each unmatched vertex $u in L$", {
         If(cond: "DFS from $u$ finds augmenting path $P$", {
-          Assign[$"paths"$][paths $union$ {$P$}]
-          Assign[][Mark vertices in $P$ as used]
+          Assign[$"paths"$][paths $union$ {$P$}]},
+          {[Mark vertices in $P$ as used]
         })
       })
       Assign[$M$][$M triangle.l union.big_("path" P in "paths") P$]
