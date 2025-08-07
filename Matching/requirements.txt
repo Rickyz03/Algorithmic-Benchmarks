@@ -1,0 +1,27 @@
+# Bipartite Graph Matching Algorithms - Requirements
+# Core dependencies for running the matching algorithms project
+
+# Numerical computing
+numpy>=1.21.0
+
+# Visualization and plotting
+matplotlib>=3.5.0
+
+# Optional: Enhanced testing capabilities
+pytest>=7.0.0
+pytest-cov>=4.0.0
+
+# Standard library extensions (usually included, but listed for completeness)
+# typing_extensions>=4.0.0  # Only needed for Python < 3.8
+
+# Development and code quality (optional)
+black>=22.0.0
+flake8>=5.0.0
+mypy>=0.991
+
+# Documentation generation (optional)
+# sphinx>=5.0.0
+# sphinx-rtd-theme>=1.0.0
+
+# Note: This project is designed to work with minimal dependencies
+# The core algorithms only require Python standard library + numpy + matplotlib
