@@ -25,3 +25,7 @@ mypy>=0.991
 
 # Note: This project is designed to work with minimal dependencies
 # The core algorithms only require Python standard library + numpy + matplotlib
+
+
+# Maximum Pythonn version compatibility: 
+# ...
