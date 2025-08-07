@@ -39,7 +39,7 @@
   #v(2cm, weak: true)
   
   #block(text(1.1em)[
-    Your Name \
+    Riccardo Stefani \
     #datetime.today().display()
   ])
 ]
@@ -58,7 +58,7 @@ This report presents a comprehensive study of two fundamental algorithms for bip
 #pagebreak()
 
 // Table of contents
-#outline(indent: true)
+#outline(indent: auto)
 
 #pagebreak()
 
@@ -132,7 +132,7 @@ The fundamental result connecting augmenting paths to optimal matchings is:
   *Theorem 2.1 (Berge's Theorem)*: A matching $M$ is maximum if and only if there exists no augmenting path with respect to $M$.
 ]
 
-*Proof Sketch*: If an augmenting path $P$ exists, we can increase the matching size by taking the symmetric difference $M triangle.big P$ (removing edges of $M$ in $P$ and adding edges not in $M$ from $P$). Conversely, if $M$ is not maximum, there exists a larger matching $M'$, and the symmetric difference $M triangle.big M'$ contains at least one augmenting path. $square$
+*Proof Sketch*: If an augmenting path $P$ exists, we can increase the matching size by taking the symmetric difference $M triangle.l P$ (removing edges of $M$ in $P$ and adding edges not in $M$ from $P$). Conversely, if $M$ is not maximum, there exists a larger matching $M'$, and the symmetric difference $M triangle.l M'$ contains at least one augmenting path. $square$
 
 == Complexity Theory Background
 
@@ -175,16 +175,16 @@ $ c'(u,v) >= 0 quad forall (u,v) in E $
 #algorithm({
   import algorithmic: *
   Function("HungarianAlgorithm", args: ("CostMatrix $W$",), {
-    Assign[$alpha(u) leftarrow min_v W[u,v]$ for all $u in L$]
-    Assign[$beta(v) leftarrow 0$ for all $v in R$] 
-    Assign[$M leftarrow emptyset$ (empty matching)]
+    Assign[$alpha(u)$][$min_v W[u,v]$ for all $u in L$]
+    Assign[$beta(v)$][$0$ for all $v in R$] 
+    Assign[$M$][$emptyset$ (empty matching)]
     While(cond: "not all vertices in $L$ are matched", {
-      Assign[Select unmatched $u in L$]
-      Assign[$(M', "found") leftarrow$ FindAugmentingPath$(u, M, alpha, beta)$]
+      Assign[$u$][Select unmatched vertex from $L$]
+      Assign[$(M', "found")$][FindAugmentingPath$(u, M, alpha, beta)$]
       If(cond: "found", {
-        Assign[$M leftarrow M triangle.big M'$ (augment matching)]
+        Assign[$M$][$M triangle.l M'$ (augment matching)]
       }, {
-        Assign[Update dual variables $alpha, beta$]
+        Assign[][Call UpdateDualVariables to update $alpha, beta$]
       })
     })
     Return[$M$]
@@ -227,17 +227,17 @@ The key innovation is the construction of a *layered graph* that enables finding
 #algorithm({
   import algorithmic: *
   Function("HopcroftKarp", args: ("Graph $G$",), {
-    Assign[$M leftarrow emptyset$]
+    Assign[$M$][$emptyset$]
     While(cond: "BFS finds augmenting paths", {
-      Assign[Construct layered graph using BFS]
-      Assign[$"paths" leftarrow emptyset$]
+      Assign[layered_graph][Construct layered graph using BFS]
+      Assign[$"paths"$][$emptyset$]
       For(cond: "each unmatched vertex $u in L$", {
         If(cond: "DFS from $u$ finds augmenting path $P$", {
-          Assign[Add $P$ to paths]
-          Assign[Mark vertices in $P$ as used]
+          Assign[$"paths"$][paths $union$ {$P$}]
+          Assign[][Mark vertices in $P$ as used]
         })
       })
-      Assign[$M leftarrow M triangle.big union.big_("path" P in "paths") P$]
+      Assign[$M$][$M triangle.l union.big_("path" P in "paths") P$]
     })
     Return[$M$]
   })
@@ -351,7 +351,7 @@ class HopcroftKarpAlgorithm:
 === When to Use Hopcroft-Karp Algorithm
 
 - *Cardinality Problems*: When only matching size matters, not weights
-- *Sparse Graphs*: When $E = O(V)$ or $E ll V^2$ 
+- *Sparse Graphs*: When $E = O(V)$ or $E << V^2$ 
 - *Large Scale*: When the $O(sqrt(V) dot E)$ bound provides significant advantage
 - *Network Flow Applications*: As subroutine in more complex algorithms
 
