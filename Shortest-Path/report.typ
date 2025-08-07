@@ -386,10 +386,10 @@ The experimental data reveals critical scaling thresholds:
 
 === Real-World Application Mapping
 
-*GPS Navigation Systems*: A\* with Euclidean distance heuristics on road networks
-*Network Routing Protocols*: Dijkstra for link-state protocols (OSPF)
-*Game AI Pathfinding*: A\* with Manhattan distance on tile-based games
-*Financial Arbitrage Detection*: Bellman-Ford for detecting negative cycles in currency exchange
+- *GPS Navigation Systems*: A\* with Euclidean distance heuristics on road networks
+- *Network Routing Protocols*: Dijkstra for link-state protocols (OSPF)
+- *Game AI Pathfinding*: A\* with Manhattan distance on tile-based games
+- *Financial Arbitrage Detection*: Bellman-Ford for detecting negative cycles in currency exchange
 
 = Conclusions
 
