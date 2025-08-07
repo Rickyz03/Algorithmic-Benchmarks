@@ -194,8 +194,8 @@ def compare_algorithms_on_sample():
     print("-" * 50)
     print(f"{'Algorithm':<20} {'Problem Type':<25} {'Result':<20} {'Time (s)':<15}")
     print("-" * 80)
-    print(f"{'Hopcroft-Karp':<20} {'Max Cardinality':<25} {'Size: ' + str(hk_size):<20} {hk_time:.6f:<15}")
-    print(f"{'Hungarian':<20} {'Max Weight':<25} {'Weight: ' + str(hungarian_weight):<20} {hungarian_time:.6f:<15}")
+    print(f"{'Hopcroft-Karp':<20} {'Max Cardinality':<25} {'Size: ' + str(hk_size):<20} {hk_time:<15.6f}")
+    print(f"{'Hungarian':<20} {'Max Weight':<25} {'Weight: ' + str(hungarian_weight):<20} {hungarian_time:<15.6f}")
     
     plt.show()
     
