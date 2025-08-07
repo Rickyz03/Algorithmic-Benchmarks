@@ -28,4 +28,4 @@ mypy>=0.991
 
 
 # Maximum Pythonn version compatibility: 
-# ...
+# Latest, even 3.13 works
