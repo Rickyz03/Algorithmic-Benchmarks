@@ -284,14 +284,14 @@ The experimental results demonstrate clear performance hierarchies among the alg
 
 A\* with zero heuristic consistently outperformed Dijkstra's algorithm, despite being theoretically equivalent. This counter-intuitive result likely stems from implementation differences in the priority queue handling and early termination conditions.
 
-Bellman-Ford showed the expected higher execution times, averaging approximately 5× slower than Dijkstra's algorithm. This aligns with the theoretical complexity difference between $O(V E)$ and $O((V+E) log V)$.
+Bellman-Ford showed the expected higher execution times, averaging approximately 5 times slower than Dijkstra's algorithm. This aligns with the theoretical complexity difference between $O(V times E)$ and $O((V+E) log V)$.
 
 === Operations Count Scaling
 
 The operations count analysis reveals the practical impact of algorithmic complexity:
 
 - *Dijkstra and A\**: Operations count scales approximately $O(V log V)$ for sparse graphs
-- *Bellman-Ford*: Shows clear $O(V E)$ scaling, with operations counts reaching over 1,800 for graphs with 20 vertices
+- *Bellman-Ford*: Shows clear $O(V times E)$ scaling, with operations counts reaching over 1,800 for graphs with 20 vertices
 
 The scatter plots confirm that Bellman-Ford's operation count grows much more rapidly with graph size, particularly for dense graphs where $E$ approaches $V^2$.
 
@@ -306,7 +306,7 @@ Different graph structures significantly influence algorithm performance:
 
 *Dense Graphs* ($|E| ≈ 0.5|V|^2$):
 - Performance gaps become more pronounced
-- Bellman-Ford's $O(V E)$ complexity becomes problematic
+- Bellman-Ford's $O(V times E)$ complexity becomes problematic
 - Dijkstra maintains consistent performance
 
 *Negative Edge Graphs*:
@@ -406,7 +406,7 @@ This comprehensive study of three fundamental shortest path algorithms reveals b
 
 *Theoretical Validation*:
 
-The experimental results strongly support theoretical complexity predictions. Bellman-Ford's $O(V E)$ complexity manifested clearly in the operations count scaling, while Dijkstra's $O((V+E) log V)$ complexity proved efficient across all test scenarios.
+The experimental results strongly support theoretical complexity predictions. Bellman-Ford's $O(V times E)$ complexity manifested clearly in the operations count scaling, while Dijkstra's $O((V+E) log V)$ complexity proved efficient across all test scenarios.
 
 *Practical Insights*:
 
