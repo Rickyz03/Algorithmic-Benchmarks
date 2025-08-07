@@ -8,6 +8,8 @@ Author: Your Name
 Date: 2025
 """
 
+OUTPUT_DIR = "output/"
+
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.patches as patches
@@ -145,8 +147,8 @@ def compare_algorithms_on_sample():
         hk_matching, left_size, right_size, edges,
         title="Hopcroft-Karp Algorithm Result"
     )
-    fig1.savefig('hopcroft_karp_result.png', dpi=150, bbox_inches='tight')
-    print("Visualization saved as 'hopcroft_karp_result.png'")
+    fig1.savefig(OUTPUT_DIR + 'hopcroft_karp_result.png', dpi=150, bbox_inches='tight')
+    print(f"Visualization saved as '{OUTPUT_DIR + 'hopcroft_karp_result.png'}'")
     
     # Sample 2: Small weighted graph for Hungarian Algorithm
     print("\n2. HUNGARIAN ALGORITHM (Maximum Weight Matching)")
@@ -186,9 +188,9 @@ def compare_algorithms_on_sample():
         all_edges_weighted, title="Hungarian Algorithm Result",
         weights=weights_dict
     )
-    fig2.savefig('hungarian_result.png', dpi=150, bbox_inches='tight')
-    print("Visualization saved as 'hungarian_result.png'")
-    
+    fig2.savefig(OUTPUT_DIR + 'hungarian_result.png', dpi=150, bbox_inches='tight')
+    print(f"Visualization saved as '{OUTPUT_DIR + 'hungarian_result.png'}'")
+
     # Summary comparison
     print("\n3. ALGORITHM COMPARISON SUMMARY")
     print("-" * 50)
