@@ -1,4 +1,5 @@
-#import "@preview/algorithmic:0.1.0": algorithm
+#import "@preview/algorithmic:0.1.0"
+#import algorithmic: algorithm
 #import "@preview/cetz:0.2.2": canvas, draw, tree
 #import "@preview/fletcher:0.5.1" as fletcher: node, edge
 
@@ -183,11 +184,10 @@ The Ford-Fulkerson method follows a generic framework that can be instantiated w
     Assign[$f(u,v)$][$0$ for all $(u,v) ∈ E$]
     While(cond: "there exists an augmenting path $P$ in $G_f$", {
       Assign[$c_f(P)$][minimum residual capacity along $P$]
-      ForAll(cond: "edges $(u,v)$ in $P$", {
+      For(cond: "edges $(u,v)$ in $P$", {
         If(cond: "$(u,v) ∈ E$", {
           Assign[$f(u,v)$][$f(u,v) + c_f(P)$]
-        })
-        Else({
+        }, {
           Assign[$f(v,u)$][$f(v,u) - c_f(P)$]
         })
       })
@@ -207,7 +207,7 @@ The generic Ford-Fulkerson framework does not specify how augmenting paths shoul
       Return[path $∪ \{t\}$]
     })
     Assign("visited")["visited" $∪ \{u\}$]
-    ForAll(cond: "$v$ such that $c_f(u,v) > 0$ and $v ∉$ visited", {
+  For(cond: "$v$ such that $c_f(u,v) > 0$ and $v ∉$ visited", {
       Assign["result"]["DFS-Find-Path($v$, $t$, visited, path $∪ \{u\}$)"]
       If(cond: "result $≠$ null", {
         Return["result"]
@@ -255,7 +255,7 @@ The Edmonds-Karp algorithm modifies Ford-Fulkerson by using *breadth-first searc
     
     While(cond: "queue is not empty", {
       Assign["u"]["queue.dequeue()"]
-      ForAll(cond: "$v$ such that $c_f(u,v) > 0$ and $v ∉$ visited", {
+  For(cond: "$v$ such that $c_f(u,v) > 0$ and $v ∉$ visited", {
         State["queue.enqueue($v$)"]
         Assign["visited"]["visited" $∪ \{v\}$]
         Assign["parent[$v$]"][$u$]
@@ -272,14 +272,14 @@ The Edmonds-Karp algorithm modifies Ford-Fulkerson by using *breadth-first searc
 
 The BFS-based path selection provides several theoretical guarantees:
 
-*Theorem:* The Edmonds-Karp algorithm runs in $O(VE^2)$ time.
+*Theorem:* The Edmonds-Karp algorithm runs in $O(V E^2)$ time.
 
 *Proof Sketch:*
 1. Each BFS operation requires $O(E)$ time
 2. The distance from $s$ to $t$ (in terms of edges) can increase at most $V$ times
 3. Between distance increases, at most $E$ edges can become saturated
-4. Therefore, at most $O(VE)$ iterations are needed
-5. Total complexity: $O(VE) · O(E) = O(VE^2)$
+4. Therefore, at most $O(V E)$ iterations are needed
+5. Total complexity: $O(V E) · O(E) = O(V E^2)$
 
 *Key Insight:* By always choosing shortest paths, the algorithm ensures that the distance to the sink in the residual network is non-decreasing, leading to the polynomial bound.
 
@@ -296,7 +296,7 @@ Our Edmonds-Karp implementation incorporates several optimizations:
 | Aspect | Ford-Fulkerson | Edmonds-Karp |
 |--------|---------------|--------------|
 | *Path Strategy* | Any augmenting path (DFS) | Shortest augmenting path (BFS) |
-| *Time Complexity* | $O(E \cdot |f^*|)$ | $O(VE^2)$ |
+| *Time Complexity* | $O(E \cdot |f^*|)$ | $O(V E^2)$ |
 | *Termination* | Guaranteed only for rational capacities | Always guaranteed |
 | *Practical Performance* | Variable, can be poor | Consistently polynomial |
 
