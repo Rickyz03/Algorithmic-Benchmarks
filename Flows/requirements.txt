@@ -1,0 +1,7 @@
+matplotlib>=3.5.0
+networkx>=2.8.0
+numpy>=1.21.0
+
+
+# Maximum Pythonn version compatibility: 
+# ...
