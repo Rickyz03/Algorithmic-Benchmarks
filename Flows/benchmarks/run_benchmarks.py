@@ -5,6 +5,8 @@ This module runs performance benchmarks on various graph types and sizes
 to compare the efficiency of both maximum flow algorithms.
 """
 
+OUTPUT_DIR = "output/"
+
 import time
 import sys
 import os
@@ -190,7 +192,7 @@ class MaxFlowBenchmark:
         
         return all_results
     
-    def save_results(self, results: List[Dict[str, Any]], filename: str = 'benchmark_results.json'):
+    def save_results(self, results: List[Dict[str, Any]], filename: str = OUTPUT_DIR + 'benchmark_results.json'):
         """
         Save benchmark results to a JSON file.
         

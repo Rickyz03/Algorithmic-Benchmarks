@@ -6,13 +6,20 @@ on various graph types, with visualization capabilities using NetworkX
 and Matplotlib.
 """
 
+OUTPUT_DIR = "output/"
+
 import sys
 import os
 from typing import Dict, List, Tuple
+import matplotlib
+matplotlib.use('Agg')  # Use non-interactive backend to avoid Tkinter issues
 import matplotlib.pyplot as plt
 import networkx as nx
 from matplotlib.patches import FancyBboxPatch
 import numpy as np
+
+# Configure matplotlib to handle multiple plots properly
+plt.ion()  # Turn on interactive mode
 
 # Add current directory to path for imports
 sys.path.append(os.path.dirname(__file__))
@@ -52,7 +59,7 @@ class FlowNetworkVisualizer:
     def visualize_graph_with_flow(graph: Dict[int, List[Tuple[int, int]]], 
                                  flow_edges: List[Tuple[int, int, int]], 
                                  source: int, sink: int, title: str = "Flow Network",
-                                 figsize: Tuple[int, int] = (12, 8)):
+                                 figsize: Tuple[int, int] = (12, 8), show_plot: bool = True):
         """
         Visualize a flow network with flow values displayed.
         
@@ -63,7 +70,11 @@ class FlowNetworkVisualizer:
             sink: Sink node
             title: Plot title
             figsize: Figure size tuple
+            show_plot: Whether to display the plot immediately
         """
+        # Close any existing plots to prevent conflicts
+        plt.close('all')
+        
         # Create NetworkX graph
         G = FlowNetworkVisualizer.graph_to_networkx(graph)
         
@@ -74,7 +85,7 @@ class FlowNetworkVisualizer:
             data['flow'] = flow_dict.get((u, v), 0)
         
         # Create figure and axis
-        plt.figure(figsize=figsize)
+        fig, ax = plt.subplots(figsize=figsize)
         
         # Position nodes using spring layout
         pos = nx.spring_layout(G, seed=42, k=2, iterations=50)
@@ -95,10 +106,10 @@ class FlowNetworkVisualizer:
                 node_sizes.append(600)
         
         nx.draw_networkx_nodes(G, pos, node_color=node_colors, 
-                              node_size=node_sizes, alpha=0.9)
+                              node_size=node_sizes, alpha=0.9, ax=ax)
         
         # Draw node labels
-        nx.draw_networkx_labels(G, pos, font_size=12, font_weight='bold')
+        nx.draw_networkx_labels(G, pos, font_size=12, font_weight='bold', ax=ax)
         
         # Draw edges with different styles based on flow
         edge_colors = []
@@ -118,7 +129,7 @@ class FlowNetworkVisualizer:
         
         nx.draw_networkx_edges(G, pos, edge_color=edge_colors, 
                               width=edge_widths, alpha=0.7,
-                              arrowsize=20, arrowstyle='->')
+                              arrowsize=20, arrowstyle='->', ax=ax)
         
         # Draw edge labels (capacity/flow)
         edge_labels = {}
@@ -127,7 +138,7 @@ class FlowNetworkVisualizer:
             flow = data['flow']
             edge_labels[(u, v)] = f"{flow}/{capacity}"
         
-        nx.draw_networkx_edge_labels(G, pos, edge_labels, font_size=9)
+        nx.draw_networkx_edge_labels(G, pos, edge_labels, font_size=9, ax=ax)
         
         # Add legend
         legend_elements = [
@@ -141,12 +152,19 @@ class FlowNetworkVisualizer:
             plt.Line2D([0], [0], color='gray', linewidth=1, label='No Flow')
         ]
         
-        plt.legend(handles=legend_elements, loc='upper left', bbox_to_anchor=(1, 1))
+        ax.legend(handles=legend_elements, loc='upper left', bbox_to_anchor=(1, 1))
+        ax.set_title(title, fontsize=16, fontweight='bold')
+        ax.axis('off')
         
-        plt.title(title, fontsize=16, fontweight='bold')
-        plt.axis('off')
         plt.tight_layout()
-        plt.show()
+        
+        if show_plot:
+            # Save the plot instead of showing it to avoid Tkinter issues
+            plt.savefig('temp_flow_plot.png', dpi=150, bbox_inches='tight')
+            print(f"Plot saved as 'temp_flow_plot.png'")
+            print("(Plot display disabled to avoid GUI conflicts)")
+        
+        return fig
     
     @staticmethod
     def compare_algorithms(graph: Dict[int, List[Tuple[int, int]]], 
@@ -159,6 +177,9 @@ class FlowNetworkVisualizer:
             source: Source node
             sink: Sink node
         """
+        # Close any existing plots to prevent conflicts
+        plt.close('all')
+        
         # Run both algorithms
         ff = FordFulkerson(graph)
         ek = EdmondsKarp(graph)
@@ -169,28 +190,101 @@ class FlowNetworkVisualizer:
         ff_edges = ff.get_flow_edges()
         ek_edges = ek.get_flow_edges()
         
-        # Create comparison plot
+        # Create comparison plot with proper subplot handling
         fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(20, 8))
         
-        # Ford-Fulkerson visualization
-        plt.sca(ax1)
-        FlowNetworkVisualizer.visualize_graph_with_flow(
-            graph, ff_edges, source, sink,
-            title=f"Ford-Fulkerson\nMax Flow: {ff_flow}, Iterations: {ff_iter}"
-        )
+        # Create NetworkX graphs for both algorithms
+        G1 = FlowNetworkVisualizer.graph_to_networkx(graph)
+        G2 = FlowNetworkVisualizer.graph_to_networkx(graph)
         
-        # Edmonds-Karp visualization
-        plt.sca(ax2)
-        FlowNetworkVisualizer.visualize_graph_with_flow(
-            graph, ek_edges, source, sink,
-            title=f"Edmonds-Karp\nMax Flow: {ek_flow}, Iterations: {ek_iter}"
-        )
+        # Add flow information
+        ff_flow_dict = {(u, v): flow for u, v, flow in ff_edges}
+        ek_flow_dict = {(u, v): flow for u, v, flow in ek_edges}
         
-        plt.suptitle("Algorithm Comparison", fontsize=18, fontweight='bold')
+        for u, v, data in G1.edges(data=True):
+            data['flow'] = ff_flow_dict.get((u, v), 0)
+        for u, v, data in G2.edges(data=True):
+            data['flow'] = ek_flow_dict.get((u, v), 0)
+        
+        # Use same layout for both graphs for easier comparison
+        pos = nx.spring_layout(G1, seed=42, k=2, iterations=50)
+        
+        # Draw Ford-Fulkerson result
+        FlowNetworkVisualizer._draw_single_graph(G1, pos, source, sink, ax1,
+                                                f"Ford-Fulkerson\nMax Flow: {ff_flow}, Iterations: {ff_iter}")
+        
+        # Draw Edmonds-Karp result  
+        FlowNetworkVisualizer._draw_single_graph(G2, pos, source, sink, ax2,
+                                                f"Edmonds-Karp\nMax Flow: {ek_flow}, Iterations: {ek_iter}")
+        
+        fig.suptitle("Algorithm Comparison", fontsize=18, fontweight='bold')
         plt.tight_layout()
-        plt.show()
+        
+        # Save instead of showing to avoid GUI issues
+        plt.savefig(OUTPUT_DIR + 'algorithm_comparison.png', dpi=150, bbox_inches='tight')
+        print(f"Algorithm comparison saved as '{OUTPUT_DIR}algorithm_comparison.png'")
+        print("(Plot display disabled to avoid GUI conflicts)")
+        
+        plt.close(fig)  # Close the figure to free memory
         
         return ff_flow, ff_iter, ek_flow, ek_iter
+    
+    @staticmethod
+    def _draw_single_graph(G, pos, source, sink, ax, title):
+        """Helper method to draw a single graph on a given axis."""
+        # Node colors and sizes
+        node_colors = []
+        node_sizes = []
+        
+        for node in G.nodes():
+            if node == source:
+                node_colors.append('lightgreen')
+                node_sizes.append(800)
+            elif node == sink:
+                node_colors.append('lightcoral')
+                node_sizes.append(800)
+            else:
+                node_colors.append('lightblue')
+                node_sizes.append(600)
+        
+        # Draw nodes
+        nx.draw_networkx_nodes(G, pos, node_color=node_colors, 
+                              node_size=node_sizes, alpha=0.9, ax=ax)
+        
+        # Draw node labels
+        nx.draw_networkx_labels(G, pos, font_size=12, font_weight='bold', ax=ax)
+        
+        # Edge colors and widths based on flow
+        edge_colors = []
+        edge_widths = []
+        
+        for u, v, data in G.edges(data=True):
+            flow = data['flow']
+            capacity = data['capacity']
+            
+            if flow > 0:
+                edge_widths.append(1 + 3 * (flow / max(1, capacity)))
+                edge_colors.append('red')
+            else:
+                edge_widths.append(1)
+                edge_colors.append('gray')
+        
+        # Draw edges
+        nx.draw_networkx_edges(G, pos, edge_color=edge_colors, 
+                              width=edge_widths, alpha=0.7,
+                              arrowsize=20, arrowstyle='->', ax=ax)
+        
+        # Edge labels
+        edge_labels = {}
+        for u, v, data in G.edges(data=True):
+            capacity = data['capacity']
+            flow = data['flow']
+            edge_labels[(u, v)] = f"{flow}/{capacity}"
+        
+        nx.draw_networkx_edge_labels(G, pos, edge_labels, font_size=9, ax=ax)
+        
+        ax.set_title(title, fontsize=14, fontweight='bold')
+        ax.axis('off')
 
 
 def demonstrate_algorithms():
@@ -221,10 +315,11 @@ def demonstrate_algorithms():
     print(f"Edmonds-Karp: Max Flow = {ek_flow}, Iterations = {ek_iter}")
     
     # Visualize the simple graph
-    visualizer.visualize_graph_with_flow(
+    fig = visualizer.visualize_graph_with_flow(
         simple_graph, ff.get_flow_edges(), 0, 3,
-        title="Simple Graph - Ford-Fulkerson Result"
+        title="Simple Graph - Ford-Fulkerson Result", show_plot=False
     )
+    plt.close(fig)  # Clean up
     
     # Example 2: Random graph
     print("\n2. Random Graph Example")
@@ -404,6 +499,14 @@ def main():
     print("Maximum Flow Algorithms - Ford-Fulkerson vs Edmonds-Karp")
     print("="*60)
     
+    # Set matplotlib to use a safer backend
+    try:
+        import matplotlib
+        matplotlib.use('Agg')  # Non-interactive backend
+        print("Note: Plots will be saved as PNG files to avoid GUI conflicts.")
+    except:
+        pass
+    
     while True:
         print("\nMain Menu:")
         print("1. Run Algorithm Demonstration")
@@ -414,15 +517,32 @@ def main():
         choice = input("\nEnter your choice (1-4): ").strip()
         
         if choice == '1':
-            demonstrate_algorithms()
+            try:
+                demonstrate_algorithms()
+            except Exception as e:
+                print(f"Error during demonstration: {e}")
+                
         elif choice == '2':
-            interactive_demo()
+            try:
+                interactive_demo()
+            except Exception as e:
+                print(f"Error during interactive demo: {e}")
+                
         elif choice == '3':
-            print("Running benchmarks... (this may take a while)")
-            from benchmarks.run_benchmarks import main as run_benchmarks
-            run_benchmarks()
+            try:
+                print("Running benchmarks... (this may take a while)")
+                from benchmarks.run_benchmarks import main as run_benchmarks
+                run_benchmarks()
+            except Exception as e:
+                print(f"Error during benchmarking: {e}")
+                
         elif choice == '4':
             print("Thank you for using the Maximum Flow demonstration!")
+            # Clean up any remaining matplotlib resources
+            try:
+                plt.close('all')
+            except:
+                pass
             break
         else:
             print("Invalid choice! Please enter 1-4.")
@@ -431,8 +551,15 @@ def main():
 if __name__ == '__main__':
     # Check if matplotlib is available
     try:
+        import matplotlib
+        # Force use of non-interactive backend to avoid Tkinter issues
+        matplotlib.use('Agg')
         import matplotlib.pyplot as plt
         import networkx as nx
+        
+        # Clean up any existing figures
+        plt.close('all')
+        
         main()
     except ImportError as e:
         print("Error: Required packages not found.")
@@ -440,3 +567,12 @@ if __name__ == '__main__':
         print("pip install matplotlib networkx")
         print(f"Missing: {e}")
         sys.exit(1)
+    except Exception as e:
+        print(f"Unexpected error: {e}")
+        sys.exit(1)
+    finally:
+        # Final cleanup
+        try:
+            plt.close('all')
+        except:
+            pass

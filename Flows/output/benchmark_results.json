@@ -1,0 +1,1538 @@
+[
+  {
+    "algorithm": "Ford-Fulkerson",
+    "max_flow": 25,
+    "iterations": 4,
+    "execution_time": 6.349998875521123e-05,
+    "source": 0,
+    "sink": 8,
+    "graph_type": "random",
+    "trial": 0,
+    "graph_params": {
+      "num_nodes": 10,
+      "num_edges": 20,
+      "max_capacity": 50
+    },
+    "num_nodes": 10,
+    "num_edges": 20
+  },
+  {
+    "algorithm": "Edmonds-Karp",
+    "max_flow": 25,
+    "iterations": 2,
+    "execution_time": 3.940000897273421e-05,
+    "source": 0,
+    "sink": 8,
+    "graph_type": "random",
+    "trial": 0,
+    "graph_params": {
+      "num_nodes": 10,
+      "num_edges": 20,
+      "max_capacity": 50
+    },
+    "num_nodes": 10,
+    "num_edges": 20
+  },
+  {
+    "algorithm": "Ford-Fulkerson",
+    "max_flow": 36,
+    "iterations": 6,
+    "execution_time": 6.859999848529696e-05,
+    "source": 0,
+    "sink": 9,
+    "graph_type": "random",
+    "trial": 1,
+    "graph_params": {
+      "num_nodes": 10,
+      "num_edges": 20,
+      "max_capacity": 50
+    },
+    "num_nodes": 10,
+    "num_edges": 20
+  },
+  {
+    "algorithm": "Edmonds-Karp",
+    "max_flow": 36,
+    "iterations": 4,
+    "execution_time": 5.190001684240997e-05,
+    "source": 0,
+    "sink": 9,
+    "graph_type": "random",
+    "trial": 1,
+    "graph_params": {
+      "num_nodes": 10,
+      "num_edges": 20,
+      "max_capacity": 50
+    },
+    "num_nodes": 10,
+    "num_edges": 20
+  },
+  {
+    "algorithm": "Ford-Fulkerson",
+    "max_flow": 48,
+    "iterations": 2,
+    "execution_time": 2.680000034160912e-05,
+    "source": 0,
+    "sink": 9,
+    "graph_type": "random",
+    "trial": 2,
+    "graph_params": {
+      "num_nodes": 10,
+      "num_edges": 20,
+      "max_capacity": 50
+    },
+    "num_nodes": 10,
+    "num_edges": 20
+  },
+  {
+    "algorithm": "Edmonds-Karp",
+    "max_flow": 48,
+    "iterations": 2,
+    "execution_time": 2.8300011763349175e-05,
+    "source": 0,
+    "sink": 9,
+    "graph_type": "random",
+    "trial": 2,
+    "graph_params": {
+      "num_nodes": 10,
+      "num_edges": 20,
+      "max_capacity": 50
+    },
+    "num_nodes": 10,
+    "num_edges": 20
+  },
+  {
+    "algorithm": "Ford-Fulkerson",
+    "max_flow": 57,
+    "iterations": 8,
+    "execution_time": 0.0001640999980736524,
+    "source": 0,
+    "sink": 19,
+    "graph_type": "random",
+    "trial": 0,
+    "graph_params": {
+      "num_nodes": 20,
+      "num_edges": 50,
+      "max_capacity": 50
+    },
+    "num_nodes": 20,
+    "num_edges": 50
+  },
+  {
+    "algorithm": "Edmonds-Karp",
+    "max_flow": 57,
+    "iterations": 3,
+    "execution_time": 5.970001802779734e-05,
+    "source": 0,
+    "sink": 19,
+    "graph_type": "random",
+    "trial": 0,
+    "graph_params": {
+      "num_nodes": 20,
+      "num_edges": 50,
+      "max_capacity": 50
+    },
+    "num_nodes": 20,
+    "num_edges": 50
+  },
+  {
+    "algorithm": "Ford-Fulkerson",
+    "max_flow": 87,
+    "iterations": 37,
+    "execution_time": 0.000584400026127696,
+    "source": 0,
+    "sink": 18,
+    "graph_type": "random",
+    "trial": 1,
+    "graph_params": {
+      "num_nodes": 20,
+      "num_edges": 50,
+      "max_capacity": 50
+    },
+    "num_nodes": 20,
+    "num_edges": 50
+  },
+  {
+    "algorithm": "Edmonds-Karp",
+    "max_flow": 87,
+    "iterations": 11,
+    "execution_time": 0.00016379999578930438,
+    "source": 0,
+    "sink": 18,
+    "graph_type": "random",
+    "trial": 1,
+    "graph_params": {
+      "num_nodes": 20,
+      "num_edges": 50,
+      "max_capacity": 50
+    },
+    "num_nodes": 20,
+    "num_edges": 50
+  },
+  {
+    "algorithm": "Ford-Fulkerson",
+    "max_flow": 43,
+    "iterations": 15,
+    "execution_time": 0.00025499999173916876,
+    "source": 0,
+    "sink": 19,
+    "graph_type": "random",
+    "trial": 2,
+    "graph_params": {
+      "num_nodes": 20,
+      "num_edges": 50,
+      "max_capacity": 50
+    },
+    "num_nodes": 20,
+    "num_edges": 50
+  },
+  {
+    "algorithm": "Edmonds-Karp",
+    "max_flow": 43,
+    "iterations": 5,
+    "execution_time": 0.0001018000184558332,
+    "source": 0,
+    "sink": 19,
+    "graph_type": "random",
+    "trial": 2,
+    "graph_params": {
+      "num_nodes": 20,
+      "num_edges": 50,
+      "max_capacity": 50
+    },
+    "num_nodes": 20,
+    "num_edges": 50
+  },
+  {
+    "algorithm": "Ford-Fulkerson",
+    "max_flow": 25,
+    "iterations": 10,
+    "execution_time": 0.0002992999798152596,
+    "source": 0,
+    "sink": 29,
+    "graph_type": "random",
+    "trial": 0,
+    "graph_params": {
+      "num_nodes": 30,
+      "num_edges": 80,
+      "max_capacity": 50
+    },
+    "num_nodes": 30,
+    "num_edges": 80
+  },
+  {
+    "algorithm": "Edmonds-Karp",
+    "max_flow": 25,
+    "iterations": 6,
+    "execution_time": 0.0001753999968059361,
+    "source": 0,
+    "sink": 29,
+    "graph_type": "random",
+    "trial": 0,
+    "graph_params": {
+      "num_nodes": 30,
+      "num_edges": 80,
+      "max_capacity": 50
+    },
+    "num_nodes": 30,
+    "num_edges": 80
+  },
+  {
+    "algorithm": "Ford-Fulkerson",
+    "max_flow": 37,
+    "iterations": 20,
+    "execution_time": 0.0005361000075936317,
+    "source": 0,
+    "sink": 29,
+    "graph_type": "random",
+    "trial": 1,
+    "graph_params": {
+      "num_nodes": 30,
+      "num_edges": 80,
+      "max_capacity": 50
+    },
+    "num_nodes": 30,
+    "num_edges": 80
+  },
+  {
+    "algorithm": "Edmonds-Karp",
+    "max_flow": 37,
+    "iterations": 5,
+    "execution_time": 0.00011739999172277749,
+    "source": 0,
+    "sink": 29,
+    "graph_type": "random",
+    "trial": 1,
+    "graph_params": {
+      "num_nodes": 30,
+      "num_edges": 80,
+      "max_capacity": 50
+    },
+    "num_nodes": 30,
+    "num_edges": 80
+  },
+  {
+    "algorithm": "Ford-Fulkerson",
+    "max_flow": 25,
+    "iterations": 13,
+    "execution_time": 0.000315699988277629,
+    "source": 0,
+    "sink": 29,
+    "graph_type": "random",
+    "trial": 2,
+    "graph_params": {
+      "num_nodes": 30,
+      "num_edges": 80,
+      "max_capacity": 50
+    },
+    "num_nodes": 30,
+    "num_edges": 80
+  },
+  {
+    "algorithm": "Edmonds-Karp",
+    "max_flow": 25,
+    "iterations": 5,
+    "execution_time": 9.57000011112541e-05,
+    "source": 0,
+    "sink": 29,
+    "graph_type": "random",
+    "trial": 2,
+    "graph_params": {
+      "num_nodes": 30,
+      "num_edges": 80,
+      "max_capacity": 50
+    },
+    "num_nodes": 30,
+    "num_edges": 80
+  },
+  {
+    "algorithm": "Ford-Fulkerson",
+    "max_flow": 3,
+    "iterations": 1,
+    "execution_time": 3.4699973184615374e-05,
+    "source": 0,
+    "sink": 8,
+    "graph_type": "linear",
+    "trial": 0,
+    "graph_params": {
+      "num_nodes": 10,
+      "max_capacity": 50
+    },
+    "num_nodes": 10,
+    "num_edges": 9
+  },
+  {
+    "algorithm": "Edmonds-Karp",
+    "max_flow": 3,
+    "iterations": 1,
+    "execution_time": 2.710000262595713e-05,
+    "source": 0,
+    "sink": 8,
+    "graph_type": "linear",
+    "trial": 0,
+    "graph_params": {
+      "num_nodes": 10,
+      "max_capacity": 50
+    },
+    "num_nodes": 10,
+    "num_edges": 9
+  },
+  {
+    "algorithm": "Ford-Fulkerson",
+    "max_flow": 5,
+    "iterations": 1,
+    "execution_time": 2.030000905506313e-05,
+    "source": 0,
+    "sink": 8,
+    "graph_type": "linear",
+    "trial": 1,
+    "graph_params": {
+      "num_nodes": 10,
+      "max_capacity": 50
+    },
+    "num_nodes": 10,
+    "num_edges": 9
+  },
+  {
+    "algorithm": "Edmonds-Karp",
+    "max_flow": 5,
+    "iterations": 1,
+    "execution_time": 1.9700004486367106e-05,
+    "source": 0,
+    "sink": 8,
+    "graph_type": "linear",
+    "trial": 1,
+    "graph_params": {
+      "num_nodes": 10,
+      "max_capacity": 50
+    },
+    "num_nodes": 10,
+    "num_edges": 9
+  },
+  {
+    "algorithm": "Ford-Fulkerson",
+    "max_flow": 4,
+    "iterations": 1,
+    "execution_time": 1.8399994587525725e-05,
+    "source": 0,
+    "sink": 8,
+    "graph_type": "linear",
+    "trial": 2,
+    "graph_params": {
+      "num_nodes": 10,
+      "max_capacity": 50
+    },
+    "num_nodes": 10,
+    "num_edges": 9
+  },
+  {
+    "algorithm": "Edmonds-Karp",
+    "max_flow": 4,
+    "iterations": 1,
+    "execution_time": 1.7700018361210823e-05,
+    "source": 0,
+    "sink": 8,
+    "graph_type": "linear",
+    "trial": 2,
+    "graph_params": {
+      "num_nodes": 10,
+      "max_capacity": 50
+    },
+    "num_nodes": 10,
+    "num_edges": 9
+  },
+  {
+    "algorithm": "Ford-Fulkerson",
+    "max_flow": 3,
+    "iterations": 1,
+    "execution_time": 4.7600013203918934e-05,
+    "source": 0,
+    "sink": 18,
+    "graph_type": "linear",
+    "trial": 0,
+    "graph_params": {
+      "num_nodes": 20,
+      "max_capacity": 50
+    },
+    "num_nodes": 20,
+    "num_edges": 19
+  },
+  {
+    "algorithm": "Edmonds-Karp",
+    "max_flow": 3,
+    "iterations": 1,
+    "execution_time": 4.0399987483397126e-05,
+    "source": 0,
+    "sink": 18,
+    "graph_type": "linear",
+    "trial": 0,
+    "graph_params": {
+      "num_nodes": 20,
+      "max_capacity": 50
+    },
+    "num_nodes": 20,
+    "num_edges": 19
+  },
+  {
+    "algorithm": "Ford-Fulkerson",
+    "max_flow": 2,
+    "iterations": 1,
+    "execution_time": 4.010001430287957e-05,
+    "source": 0,
+    "sink": 18,
+    "graph_type": "linear",
+    "trial": 1,
+    "graph_params": {
+      "num_nodes": 20,
+      "max_capacity": 50
+    },
+    "num_nodes": 20,
+    "num_edges": 19
+  },
+  {
+    "algorithm": "Edmonds-Karp",
+    "max_flow": 2,
+    "iterations": 1,
+    "execution_time": 3.819999983534217e-05,
+    "source": 0,
+    "sink": 18,
+    "graph_type": "linear",
+    "trial": 1,
+    "graph_params": {
+      "num_nodes": 20,
+      "max_capacity": 50
+    },
+    "num_nodes": 20,
+    "num_edges": 19
+  },
+  {
+    "algorithm": "Ford-Fulkerson",
+    "max_flow": 3,
+    "iterations": 1,
+    "execution_time": 3.749999450519681e-05,
+    "source": 0,
+    "sink": 18,
+    "graph_type": "linear",
+    "trial": 2,
+    "graph_params": {
+      "num_nodes": 20,
+      "max_capacity": 50
+    },
+    "num_nodes": 20,
+    "num_edges": 19
+  },
+  {
+    "algorithm": "Edmonds-Karp",
+    "max_flow": 3,
+    "iterations": 1,
+    "execution_time": 3.57000099029392e-05,
+    "source": 0,
+    "sink": 18,
+    "graph_type": "linear",
+    "trial": 2,
+    "graph_params": {
+      "num_nodes": 20,
+      "max_capacity": 50
+    },
+    "num_nodes": 20,
+    "num_edges": 19
+  },
+  {
+    "algorithm": "Ford-Fulkerson",
+    "max_flow": 3,
+    "iterations": 1,
+    "execution_time": 6.399999256245792e-05,
+    "source": 0,
+    "sink": 28,
+    "graph_type": "linear",
+    "trial": 0,
+    "graph_params": {
+      "num_nodes": 30,
+      "max_capacity": 50
+    },
+    "num_nodes": 30,
+    "num_edges": 29
+  },
+  {
+    "algorithm": "Edmonds-Karp",
+    "max_flow": 3,
+    "iterations": 1,
+    "execution_time": 5.440000677481294e-05,
+    "source": 0,
+    "sink": 28,
+    "graph_type": "linear",
+    "trial": 0,
+    "graph_params": {
+      "num_nodes": 30,
+      "max_capacity": 50
+    },
+    "num_nodes": 30,
+    "num_edges": 29
+  },
+  {
+    "algorithm": "Ford-Fulkerson",
+    "max_flow": 1,
+    "iterations": 1,
+    "execution_time": 5.940001574344933e-05,
+    "source": 0,
+    "sink": 28,
+    "graph_type": "linear",
+    "trial": 1,
+    "graph_params": {
+      "num_nodes": 30,
+      "max_capacity": 50
+    },
+    "num_nodes": 30,
+    "num_edges": 29
+  },
+  {
+    "algorithm": "Edmonds-Karp",
+    "max_flow": 1,
+    "iterations": 1,
+    "execution_time": 4.47999918833375e-05,
+    "source": 0,
+    "sink": 28,
+    "graph_type": "linear",
+    "trial": 1,
+    "graph_params": {
+      "num_nodes": 30,
+      "max_capacity": 50
+    },
+    "num_nodes": 30,
+    "num_edges": 29
+  },
+  {
+    "algorithm": "Ford-Fulkerson",
+    "max_flow": 2,
+    "iterations": 1,
+    "execution_time": 3.1800009310245514e-05,
+    "source": 0,
+    "sink": 28,
+    "graph_type": "linear",
+    "trial": 2,
+    "graph_params": {
+      "num_nodes": 30,
+      "max_capacity": 50
+    },
+    "num_nodes": 30,
+    "num_edges": 29
+  },
+  {
+    "algorithm": "Edmonds-Karp",
+    "max_flow": 2,
+    "iterations": 1,
+    "execution_time": 2.9999995604157448e-05,
+    "source": 0,
+    "sink": 28,
+    "graph_type": "linear",
+    "trial": 2,
+    "graph_params": {
+      "num_nodes": 30,
+      "max_capacity": 50
+    },
+    "num_nodes": 30,
+    "num_edges": 29
+  },
+  {
+    "algorithm": "Ford-Fulkerson",
+    "max_flow": 82,
+    "iterations": 5,
+    "execution_time": 2.8900016332045197e-05,
+    "source": 0,
+    "sink": 7,
+    "graph_type": "dense",
+    "trial": 0,
+    "graph_params": {
+      "num_nodes": 8,
+      "connection_prob": 0.4,
+      "max_capacity": 50
+    },
+    "num_nodes": 8,
+    "num_edges": 28
+  },
+  {
+    "algorithm": "Edmonds-Karp",
+    "max_flow": 82,
+    "iterations": 5,
+    "execution_time": 2.7000001864507794e-05,
+    "source": 0,
+    "sink": 7,
+    "graph_type": "dense",
+    "trial": 0,
+    "graph_params": {
+      "num_nodes": 8,
+      "connection_prob": 0.4,
+      "max_capacity": 50
+    },
+    "num_nodes": 8,
+    "num_edges": 28
+  },
+  {
+    "algorithm": "Ford-Fulkerson",
+    "max_flow": 48,
+    "iterations": 5,
+    "execution_time": 2.3500004317611456e-05,
+    "source": 0,
+    "sink": 7,
+    "graph_type": "dense",
+    "trial": 1,
+    "graph_params": {
+      "num_nodes": 8,
+      "connection_prob": 0.4,
+      "max_capacity": 50
+    },
+    "num_nodes": 8,
+    "num_edges": 21
+  },
+  {
+    "algorithm": "Edmonds-Karp",
+    "max_flow": 48,
+    "iterations": 4,
+    "execution_time": 1.8499995348975062e-05,
+    "source": 0,
+    "sink": 7,
+    "graph_type": "dense",
+    "trial": 1,
+    "graph_params": {
+      "num_nodes": 8,
+      "connection_prob": 0.4,
+      "max_capacity": 50
+    },
+    "num_nodes": 8,
+    "num_edges": 21
+  },
+  {
+    "algorithm": "Ford-Fulkerson",
+    "max_flow": 57,
+    "iterations": 4,
+    "execution_time": 1.8400023691356182e-05,
+    "source": 0,
+    "sink": 7,
+    "graph_type": "dense",
+    "trial": 2,
+    "graph_params": {
+      "num_nodes": 8,
+      "connection_prob": 0.4,
+      "max_capacity": 50
+    },
+    "num_nodes": 8,
+    "num_edges": 20
+  },
+  {
+    "algorithm": "Edmonds-Karp",
+    "max_flow": 57,
+    "iterations": 3,
+    "execution_time": 1.4300021575763822e-05,
+    "source": 0,
+    "sink": 7,
+    "graph_type": "dense",
+    "trial": 2,
+    "graph_params": {
+      "num_nodes": 8,
+      "connection_prob": 0.4,
+      "max_capacity": 50
+    },
+    "num_nodes": 8,
+    "num_edges": 20
+  },
+  {
+    "algorithm": "Ford-Fulkerson",
+    "max_flow": 90,
+    "iterations": 3,
+    "execution_time": 4.099999205209315e-05,
+    "source": 0,
+    "sink": 11,
+    "graph_type": "dense",
+    "trial": 0,
+    "graph_params": {
+      "num_nodes": 12,
+      "connection_prob": 0.3,
+      "max_capacity": 50
+    },
+    "num_nodes": 12,
+    "num_edges": 47
+  },
+  {
+    "algorithm": "Edmonds-Karp",
+    "max_flow": 90,
+    "iterations": 3,
+    "execution_time": 3.0499999411404133e-05,
+    "source": 0,
+    "sink": 11,
+    "graph_type": "dense",
+    "trial": 0,
+    "graph_params": {
+      "num_nodes": 12,
+      "connection_prob": 0.3,
+      "max_capacity": 50
+    },
+    "num_nodes": 12,
+    "num_edges": 47
+  },
+  {
+    "algorithm": "Ford-Fulkerson",
+    "max_flow": 59,
+    "iterations": 4,
+    "execution_time": 2.4599983589723706e-05,
+    "source": 0,
+    "sink": 11,
+    "graph_type": "dense",
+    "trial": 1,
+    "graph_params": {
+      "num_nodes": 12,
+      "connection_prob": 0.3,
+      "max_capacity": 50
+    },
+    "num_nodes": 12,
+    "num_edges": 41
+  },
+  {
+    "algorithm": "Edmonds-Karp",
+    "max_flow": 59,
+    "iterations": 4,
+    "execution_time": 2.6599998818710446e-05,
+    "source": 0,
+    "sink": 11,
+    "graph_type": "dense",
+    "trial": 1,
+    "graph_params": {
+      "num_nodes": 12,
+      "connection_prob": 0.3,
+      "max_capacity": 50
+    },
+    "num_nodes": 12,
+    "num_edges": 41
+  },
+  {
+    "algorithm": "Ford-Fulkerson",
+    "max_flow": 17,
+    "iterations": 4,
+    "execution_time": 2.239999594166875e-05,
+    "source": 0,
+    "sink": 11,
+    "graph_type": "dense",
+    "trial": 2,
+    "graph_params": {
+      "num_nodes": 12,
+      "connection_prob": 0.3,
+      "max_capacity": 50
+    },
+    "num_nodes": 12,
+    "num_edges": 47
+  },
+  {
+    "algorithm": "Edmonds-Karp",
+    "max_flow": 17,
+    "iterations": 5,
+    "execution_time": 3.0899973353371024e-05,
+    "source": 0,
+    "sink": 11,
+    "graph_type": "dense",
+    "trial": 2,
+    "graph_params": {
+      "num_nodes": 12,
+      "connection_prob": 0.3,
+      "max_capacity": 50
+    },
+    "num_nodes": 12,
+    "num_edges": 47
+  },
+  {
+    "algorithm": "Ford-Fulkerson",
+    "max_flow": 89,
+    "iterations": 18,
+    "execution_time": 0.0002429999876767397,
+    "source": 0,
+    "sink": 15,
+    "graph_type": "dense",
+    "trial": 0,
+    "graph_params": {
+      "num_nodes": 16,
+      "connection_prob": 0.25,
+      "max_capacity": 50
+    },
+    "num_nodes": 16,
+    "num_edges": 67
+  },
+  {
+    "algorithm": "Edmonds-Karp",
+    "max_flow": 89,
+    "iterations": 9,
+    "execution_time": 0.00014299998292699456,
+    "source": 0,
+    "sink": 15,
+    "graph_type": "dense",
+    "trial": 0,
+    "graph_params": {
+      "num_nodes": 16,
+      "connection_prob": 0.25,
+      "max_capacity": 50
+    },
+    "num_nodes": 16,
+    "num_edges": 67
+  },
+  {
+    "algorithm": "Ford-Fulkerson",
+    "max_flow": 51,
+    "iterations": 13,
+    "execution_time": 0.00021019999985583127,
+    "source": 0,
+    "sink": 15,
+    "graph_type": "dense",
+    "trial": 1,
+    "graph_params": {
+      "num_nodes": 16,
+      "connection_prob": 0.25,
+      "max_capacity": 50
+    },
+    "num_nodes": 16,
+    "num_edges": 68
+  },
+  {
+    "algorithm": "Edmonds-Karp",
+    "max_flow": 51,
+    "iterations": 6,
+    "execution_time": 0.00010890001431107521,
+    "source": 0,
+    "sink": 15,
+    "graph_type": "dense",
+    "trial": 1,
+    "graph_params": {
+      "num_nodes": 16,
+      "connection_prob": 0.25,
+      "max_capacity": 50
+    },
+    "num_nodes": 16,
+    "num_edges": 68
+  },
+  {
+    "algorithm": "Ford-Fulkerson",
+    "max_flow": 92,
+    "iterations": 25,
+    "execution_time": 0.0003470999945420772,
+    "source": 0,
+    "sink": 15,
+    "graph_type": "dense",
+    "trial": 2,
+    "graph_params": {
+      "num_nodes": 16,
+      "connection_prob": 0.25,
+      "max_capacity": 50
+    },
+    "num_nodes": 16,
+    "num_edges": 76
+  },
+  {
+    "algorithm": "Edmonds-Karp",
+    "max_flow": 92,
+    "iterations": 8,
+    "execution_time": 0.00011049999739043415,
+    "source": 0,
+    "sink": 15,
+    "graph_type": "dense",
+    "trial": 2,
+    "graph_params": {
+      "num_nodes": 16,
+      "connection_prob": 0.25,
+      "max_capacity": 50
+    },
+    "num_nodes": 16,
+    "num_edges": 76
+  },
+  {
+    "algorithm": "Ford-Fulkerson",
+    "max_flow": 60,
+    "iterations": 3,
+    "execution_time": 5.420000525191426e-05,
+    "source": 0,
+    "sink": 8,
+    "graph_type": "bottleneck",
+    "trial": 0,
+    "graph_params": {
+      "num_layers": 4,
+      "layer_size": 3,
+      "bottleneck_capacity": 2,
+      "other_capacity": 20
+    },
+    "num_nodes": 12,
+    "num_edges": 27
+  },
+  {
+    "algorithm": "Edmonds-Karp",
+    "max_flow": 60,
+    "iterations": 3,
+    "execution_time": 3.659998765215278e-05,
+    "source": 0,
+    "sink": 8,
+    "graph_type": "bottleneck",
+    "trial": 0,
+    "graph_params": {
+      "num_layers": 4,
+      "layer_size": 3,
+      "bottleneck_capacity": 2,
+      "other_capacity": 20
+    },
+    "num_nodes": 12,
+    "num_edges": 27
+  },
+  {
+    "algorithm": "Ford-Fulkerson",
+    "max_flow": 60,
+    "iterations": 3,
+    "execution_time": 3.689998993650079e-05,
+    "source": 0,
+    "sink": 8,
+    "graph_type": "bottleneck",
+    "trial": 1,
+    "graph_params": {
+      "num_layers": 4,
+      "layer_size": 3,
+      "bottleneck_capacity": 2,
+      "other_capacity": 20
+    },
+    "num_nodes": 12,
+    "num_edges": 27
+  },
+  {
+    "algorithm": "Edmonds-Karp",
+    "max_flow": 60,
+    "iterations": 3,
+    "execution_time": 3.100000321865082e-05,
+    "source": 0,
+    "sink": 8,
+    "graph_type": "bottleneck",
+    "trial": 1,
+    "graph_params": {
+      "num_layers": 4,
+      "layer_size": 3,
+      "bottleneck_capacity": 2,
+      "other_capacity": 20
+    },
+    "num_nodes": 12,
+    "num_edges": 27
+  },
+  {
+    "algorithm": "Ford-Fulkerson",
+    "max_flow": 60,
+    "iterations": 3,
+    "execution_time": 3.6200013710185885e-05,
+    "source": 0,
+    "sink": 8,
+    "graph_type": "bottleneck",
+    "trial": 2,
+    "graph_params": {
+      "num_layers": 4,
+      "layer_size": 3,
+      "bottleneck_capacity": 2,
+      "other_capacity": 20
+    },
+    "num_nodes": 12,
+    "num_edges": 27
+  },
+  {
+    "algorithm": "Edmonds-Karp",
+    "max_flow": 60,
+    "iterations": 3,
+    "execution_time": 2.8900016332045197e-05,
+    "source": 0,
+    "sink": 8,
+    "graph_type": "bottleneck",
+    "trial": 2,
+    "graph_params": {
+      "num_layers": 4,
+      "layer_size": 3,
+      "bottleneck_capacity": 2,
+      "other_capacity": 20
+    },
+    "num_nodes": 12,
+    "num_edges": 27
+  },
+  {
+    "algorithm": "Ford-Fulkerson",
+    "max_flow": 4,
+    "iterations": 4,
+    "execution_time": 0.00010770000517368317,
+    "source": 0,
+    "sink": 15,
+    "graph_type": "bottleneck",
+    "trial": 0,
+    "graph_params": {
+      "num_layers": 5,
+      "layer_size": 4,
+      "bottleneck_capacity": 1,
+      "other_capacity": 30
+    },
+    "num_nodes": 20,
+    "num_edges": 64
+  },
+  {
+    "algorithm": "Edmonds-Karp",
+    "max_flow": 4,
+    "iterations": 4,
+    "execution_time": 8.140000863932073e-05,
+    "source": 0,
+    "sink": 15,
+    "graph_type": "bottleneck",
+    "trial": 0,
+    "graph_params": {
+      "num_layers": 5,
+      "layer_size": 4,
+      "bottleneck_capacity": 1,
+      "other_capacity": 30
+    },
+    "num_nodes": 20,
+    "num_edges": 64
+  },
+  {
+    "algorithm": "Ford-Fulkerson",
+    "max_flow": 4,
+    "iterations": 4,
+    "execution_time": 8.58000130392611e-05,
+    "source": 0,
+    "sink": 15,
+    "graph_type": "bottleneck",
+    "trial": 1,
+    "graph_params": {
+      "num_layers": 5,
+      "layer_size": 4,
+      "bottleneck_capacity": 1,
+      "other_capacity": 30
+    },
+    "num_nodes": 20,
+    "num_edges": 64
+  },
+  {
+    "algorithm": "Edmonds-Karp",
+    "max_flow": 4,
+    "iterations": 4,
+    "execution_time": 7.490001735277474e-05,
+    "source": 0,
+    "sink": 15,
+    "graph_type": "bottleneck",
+    "trial": 1,
+    "graph_params": {
+      "num_layers": 5,
+      "layer_size": 4,
+      "bottleneck_capacity": 1,
+      "other_capacity": 30
+    },
+    "num_nodes": 20,
+    "num_edges": 64
+  },
+  {
+    "algorithm": "Ford-Fulkerson",
+    "max_flow": 4,
+    "iterations": 4,
+    "execution_time": 8.849997539073229e-05,
+    "source": 0,
+    "sink": 15,
+    "graph_type": "bottleneck",
+    "trial": 2,
+    "graph_params": {
+      "num_layers": 5,
+      "layer_size": 4,
+      "bottleneck_capacity": 1,
+      "other_capacity": 30
+    },
+    "num_nodes": 20,
+    "num_edges": 64
+  },
+  {
+    "algorithm": "Edmonds-Karp",
+    "max_flow": 4,
+    "iterations": 4,
+    "execution_time": 7.410001126118004e-05,
+    "source": 0,
+    "sink": 15,
+    "graph_type": "bottleneck",
+    "trial": 2,
+    "graph_params": {
+      "num_layers": 5,
+      "layer_size": 4,
+      "bottleneck_capacity": 1,
+      "other_capacity": 30
+    },
+    "num_nodes": 20,
+    "num_edges": 64
+  },
+  {
+    "algorithm": "Ford-Fulkerson",
+    "max_flow": 40,
+    "iterations": 4,
+    "execution_time": 5.539998528547585e-05,
+    "source": 0,
+    "sink": 11,
+    "graph_type": "bipartite",
+    "trial": 0,
+    "graph_params": {
+      "left_size": 5,
+      "right_size": 5,
+      "connection_prob": 0.4,
+      "max_capacity": 30
+    },
+    "num_nodes": 12,
+    "num_edges": 18
+  },
+  {
+    "algorithm": "Edmonds-Karp",
+    "max_flow": 40,
+    "iterations": 4,
+    "execution_time": 4.8999994760379195e-05,
+    "source": 0,
+    "sink": 11,
+    "graph_type": "bipartite",
+    "trial": 0,
+    "graph_params": {
+      "left_size": 5,
+      "right_size": 5,
+      "connection_prob": 0.4,
+      "max_capacity": 30
+    },
+    "num_nodes": 12,
+    "num_edges": 18
+  },
+  {
+    "algorithm": "Ford-Fulkerson",
+    "max_flow": 63,
+    "iterations": 10,
+    "execution_time": 7.639999967068434e-05,
+    "source": 0,
+    "sink": 11,
+    "graph_type": "bipartite",
+    "trial": 1,
+    "graph_params": {
+      "left_size": 5,
+      "right_size": 5,
+      "connection_prob": 0.4,
+      "max_capacity": 30
+    },
+    "num_nodes": 12,
+    "num_edges": 21
+  },
+  {
+    "algorithm": "Edmonds-Karp",
+    "max_flow": 63,
+    "iterations": 10,
+    "execution_time": 9.359998512081802e-05,
+    "source": 0,
+    "sink": 11,
+    "graph_type": "bipartite",
+    "trial": 1,
+    "graph_params": {
+      "left_size": 5,
+      "right_size": 5,
+      "connection_prob": 0.4,
+      "max_capacity": 30
+    },
+    "num_nodes": 12,
+    "num_edges": 21
+  },
+  {
+    "algorithm": "Ford-Fulkerson",
+    "max_flow": 50,
+    "iterations": 8,
+    "execution_time": 7.970002479851246e-05,
+    "source": 0,
+    "sink": 11,
+    "graph_type": "bipartite",
+    "trial": 2,
+    "graph_params": {
+      "left_size": 5,
+      "right_size": 5,
+      "connection_prob": 0.4,
+      "max_capacity": 30
+    },
+    "num_nodes": 12,
+    "num_edges": 23
+  },
+  {
+    "algorithm": "Edmonds-Karp",
+    "max_flow": 50,
+    "iterations": 7,
+    "execution_time": 6.6100008552894e-05,
+    "source": 0,
+    "sink": 11,
+    "graph_type": "bipartite",
+    "trial": 2,
+    "graph_params": {
+      "left_size": 5,
+      "right_size": 5,
+      "connection_prob": 0.4,
+      "max_capacity": 30
+    },
+    "num_nodes": 12,
+    "num_edges": 23
+  },
+  {
+    "algorithm": "Ford-Fulkerson",
+    "max_flow": 105,
+    "iterations": 10,
+    "execution_time": 9.560000034980476e-05,
+    "source": 0,
+    "sink": 15,
+    "graph_type": "bipartite",
+    "trial": 0,
+    "graph_params": {
+      "left_size": 8,
+      "right_size": 6,
+      "connection_prob": 0.3,
+      "max_capacity": 40
+    },
+    "num_nodes": 16,
+    "num_edges": 25
+  },
+  {
+    "algorithm": "Edmonds-Karp",
+    "max_flow": 105,
+    "iterations": 10,
+    "execution_time": 0.00010679999832063913,
+    "source": 0,
+    "sink": 15,
+    "graph_type": "bipartite",
+    "trial": 0,
+    "graph_params": {
+      "left_size": 8,
+      "right_size": 6,
+      "connection_prob": 0.3,
+      "max_capacity": 40
+    },
+    "num_nodes": 16,
+    "num_edges": 25
+  },
+  {
+    "algorithm": "Ford-Fulkerson",
+    "max_flow": 62,
+    "iterations": 8,
+    "execution_time": 6.489999941550195e-05,
+    "source": 0,
+    "sink": 15,
+    "graph_type": "bipartite",
+    "trial": 1,
+    "graph_params": {
+      "left_size": 8,
+      "right_size": 6,
+      "connection_prob": 0.3,
+      "max_capacity": 40
+    },
+    "num_nodes": 16,
+    "num_edges": 23
+  },
+  {
+    "algorithm": "Edmonds-Karp",
+    "max_flow": 62,
+    "iterations": 8,
+    "execution_time": 8.319999324157834e-05,
+    "source": 0,
+    "sink": 15,
+    "graph_type": "bipartite",
+    "trial": 1,
+    "graph_params": {
+      "left_size": 8,
+      "right_size": 6,
+      "connection_prob": 0.3,
+      "max_capacity": 40
+    },
+    "num_nodes": 16,
+    "num_edges": 23
+  },
+  {
+    "algorithm": "Ford-Fulkerson",
+    "max_flow": 38,
+    "iterations": 8,
+    "execution_time": 6.159997428767383e-05,
+    "source": 0,
+    "sink": 15,
+    "graph_type": "bipartite",
+    "trial": 2,
+    "graph_params": {
+      "left_size": 8,
+      "right_size": 6,
+      "connection_prob": 0.3,
+      "max_capacity": 40
+    },
+    "num_nodes": 16,
+    "num_edges": 21
+  },
+  {
+    "algorithm": "Edmonds-Karp",
+    "max_flow": 38,
+    "iterations": 7,
+    "execution_time": 8.949998300522566e-05,
+    "source": 0,
+    "sink": 15,
+    "graph_type": "bipartite",
+    "trial": 2,
+    "graph_params": {
+      "left_size": 8,
+      "right_size": 6,
+      "connection_prob": 0.3,
+      "max_capacity": 40
+    },
+    "num_nodes": 16,
+    "num_edges": 21
+  },
+  {
+    "algorithm": "Ford-Fulkerson",
+    "max_flow": 29,
+    "iterations": 6,
+    "execution_time": 9.869999485090375e-05,
+    "source": 0,
+    "sink": 15,
+    "graph_type": "grid",
+    "trial": 0,
+    "graph_params": {
+      "rows": 4,
+      "cols": 4,
+      "max_capacity": 25
+    },
+    "num_nodes": 16,
+    "num_edges": 24
+  },
+  {
+    "algorithm": "Edmonds-Karp",
+    "max_flow": 29,
+    "iterations": 6,
+    "execution_time": 9.319998207502067e-05,
+    "source": 0,
+    "sink": 15,
+    "graph_type": "grid",
+    "trial": 0,
+    "graph_params": {
+      "rows": 4,
+      "cols": 4,
+      "max_capacity": 25
+    },
+    "num_nodes": 16,
+    "num_edges": 24
+  },
+  {
+    "algorithm": "Ford-Fulkerson",
+    "max_flow": 24,
+    "iterations": 4,
+    "execution_time": 5.1000009989365935e-05,
+    "source": 0,
+    "sink": 15,
+    "graph_type": "grid",
+    "trial": 1,
+    "graph_params": {
+      "rows": 4,
+      "cols": 4,
+      "max_capacity": 25
+    },
+    "num_nodes": 16,
+    "num_edges": 24
+  },
+  {
+    "algorithm": "Edmonds-Karp",
+    "max_flow": 24,
+    "iterations": 4,
+    "execution_time": 5.77000027988106e-05,
+    "source": 0,
+    "sink": 15,
+    "graph_type": "grid",
+    "trial": 1,
+    "graph_params": {
+      "rows": 4,
+      "cols": 4,
+      "max_capacity": 25
+    },
+    "num_nodes": 16,
+    "num_edges": 24
+  },
+  {
+    "algorithm": "Ford-Fulkerson",
+    "max_flow": 5,
+    "iterations": 2,
+    "execution_time": 3.090000245720148e-05,
+    "source": 0,
+    "sink": 15,
+    "graph_type": "grid",
+    "trial": 2,
+    "graph_params": {
+      "rows": 4,
+      "cols": 4,
+      "max_capacity": 25
+    },
+    "num_nodes": 16,
+    "num_edges": 24
+  },
+  {
+    "algorithm": "Edmonds-Karp",
+    "max_flow": 5,
+    "iterations": 2,
+    "execution_time": 3.409999771974981e-05,
+    "source": 0,
+    "sink": 15,
+    "graph_type": "grid",
+    "trial": 2,
+    "graph_params": {
+      "rows": 4,
+      "cols": 4,
+      "max_capacity": 25
+    },
+    "num_nodes": 16,
+    "num_edges": 24
+  },
+  {
+    "algorithm": "Ford-Fulkerson",
+    "max_flow": 8,
+    "iterations": 2,
+    "execution_time": 6.159997428767383e-05,
+    "source": 0,
+    "sink": 24,
+    "graph_type": "grid",
+    "trial": 0,
+    "graph_params": {
+      "rows": 5,
+      "cols": 5,
+      "max_capacity": 30
+    },
+    "num_nodes": 25,
+    "num_edges": 40
+  },
+  {
+    "algorithm": "Edmonds-Karp",
+    "max_flow": 8,
+    "iterations": 2,
+    "execution_time": 6.359998951666057e-05,
+    "source": 0,
+    "sink": 24,
+    "graph_type": "grid",
+    "trial": 0,
+    "graph_params": {
+      "rows": 5,
+      "cols": 5,
+      "max_capacity": 30
+    },
+    "num_nodes": 25,
+    "num_edges": 40
+  },
+  {
+    "algorithm": "Ford-Fulkerson",
+    "max_flow": 21,
+    "iterations": 5,
+    "execution_time": 9.030001820065081e-05,
+    "source": 0,
+    "sink": 24,
+    "graph_type": "grid",
+    "trial": 1,
+    "graph_params": {
+      "rows": 5,
+      "cols": 5,
+      "max_capacity": 30
+    },
+    "num_nodes": 25,
+    "num_edges": 40
+  },
+  {
+    "algorithm": "Edmonds-Karp",
+    "max_flow": 21,
+    "iterations": 5,
+    "execution_time": 0.00011560000712051988,
+    "source": 0,
+    "sink": 24,
+    "graph_type": "grid",
+    "trial": 1,
+    "graph_params": {
+      "rows": 5,
+      "cols": 5,
+      "max_capacity": 30
+    },
+    "num_nodes": 25,
+    "num_edges": 40
+  },
+  {
+    "algorithm": "Ford-Fulkerson",
+    "max_flow": 17,
+    "iterations": 4,
+    "execution_time": 8.440000237897038e-05,
+    "source": 0,
+    "sink": 24,
+    "graph_type": "grid",
+    "trial": 2,
+    "graph_params": {
+      "rows": 5,
+      "cols": 5,
+      "max_capacity": 30
+    },
+    "num_nodes": 25,
+    "num_edges": 40
+  },
+  {
+    "algorithm": "Edmonds-Karp",
+    "max_flow": 17,
+    "iterations": 4,
+    "execution_time": 9.779998799785972e-05,
+    "source": 0,
+    "sink": 24,
+    "graph_type": "grid",
+    "trial": 2,
+    "graph_params": {
+      "rows": 5,
+      "cols": 5,
+      "max_capacity": 30
+    },
+    "num_nodes": 25,
+    "num_edges": 40
+  }
+]
