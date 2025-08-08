@@ -187,7 +187,8 @@ The Ford-Fulkerson method follows a generic framework that can be instantiated w
       For(cond: "edges $(u,v)$ in $P$", {
         If(cond: "$(u,v) ∈ E$", {
           Assign[$f(u,v)$][$f(u,v) + c_f(P)$]
-        }, {
+        })
+        Else({
           Assign[$f(v,u)$][$f(v,u) - c_f(P)$]
         })
       })
