@@ -27,5 +27,5 @@ mypy>=0.991
 # The core algorithms only require Python standard library + numpy + matplotlib
 
 
-# Maximum Pythonn version compatibility: 
+# Maximum Python version compatibility: 
 # Latest, even 3.13 works

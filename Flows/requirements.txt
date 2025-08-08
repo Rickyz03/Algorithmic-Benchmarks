@@ -3,5 +3,5 @@ networkx>=2.8.0
 numpy>=1.21.0
 
 
-# Maximum Pythonn version compatibility: 
-# ...
+# Maximum Python version compatibility: 
+# Latest, even 3.13 works

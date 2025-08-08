@@ -4,5 +4,5 @@ networkx>=2.8.0
 pandas>=1.4.0
 
 
-# Maximum Pythonn version compatibility: 
+# Maximum Python version compatibility: 
 # 3.10
