@@ -15,6 +15,8 @@ Usage:
     python main.py --quick          # Run quick verification
 """
 
+OUTPUT_DIR = "output/"
+
 import sys
 import os
 import argparse
@@ -352,7 +354,7 @@ def run_benchmarks():
         # Generate plots if possible
         try:
             benchmark.plot_results()
-            print("📊 Performance plots saved as 'benchmark_results.png'")
+            print(f"📊 Performance plots saved as '{OUTPUT_DIR}benchmark_results.png'")
         except ImportError:
             print("📊 Matplotlib not available - skipping plots")
         
@@ -426,7 +428,7 @@ def generate_summary_report():
     print("PROJECT EXECUTION SUMMARY")
     print("="*80)
     
-    print("""
+    print(f"""
 This project successfully demonstrates three fundamental advanced data structures:
 
 📊 SEGMENT TREE:
@@ -457,7 +459,7 @@ This project successfully demonstrates three fundamental advanced data structure
    • Memory usage varies significantly between structures
 
 The complete analysis with detailed performance metrics and recommendations
-has been generated and saved to benchmark_results.csv and visualizations.
+has been generated and saved to {OUTPUT_DIR}benchmark_results.csv and visualizations.
     """)
 
 
@@ -512,8 +514,8 @@ def main():
         print("🎉 PROJECT COMPLETED SUCCESSFULLY!")
         print("All components executed without errors.")
         print("\nGenerated files:")
-        print("  • benchmark_results.csv - Detailed performance data")
-        print("  • benchmark_results.png - Performance visualizations (if matplotlib available)")
+        print(f"  • {OUTPUT_DIR}benchmark_results.csv - Detailed performance data")
+        print(f"  • {OUTPUT_DIR}benchmark_results.png - Performance visualizations (if matplotlib available)")
         print("  • Console output - Comprehensive analysis and recommendations")
     else:
         print("⚠️  PROJECT COMPLETED WITH SOME ISSUES")

@@ -11,6 +11,8 @@ This module provides performance comparisons between:
 Results are saved and can be visualized using matplotlib.
 """
 
+OUTPUT_DIR = "output/"
+
 import time
 import random
 import sys
@@ -366,7 +368,7 @@ class DataStructureBenchmark:
                 print(f"{result.name:<20} {result.size:<8} {time_ms:<10.2f} "
                       f"{result.ops_per_second:<12.0f} {memory_kb:<12.1f}")
     
-    def save_results_csv(self, filename: str = "benchmark_results.csv"):
+    def save_results_csv(self, filename: str = OUTPUT_DIR + "benchmark_results.csv"):
         """Save results to CSV file."""
         try:
             import csv
@@ -540,7 +542,7 @@ class DataStructureBenchmark:
             plt.yscale('log')
             
             plt.tight_layout()
-            plt.savefig('benchmark_results.png', dpi=300, bbox_inches='tight')
+            plt.savefig(f'{OUTPUT_DIR}benchmark_results.png', dpi=300, bbox_inches='tight')
             plt.show()
             
         except ImportError:
