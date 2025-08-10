@@ -281,7 +281,8 @@ class SegmentTree2D:
             else:
                 self._update_y(2 * node_x + 1, mid_x + 1, end_x, x, y, value)
             
-            self._update_x(node_x, 1, 0, self.cols - 1, y, value)
+            # Update parent node by merging children
+            self._merge_trees(node_x, 2 * node_x, 2 * node_x + 1, 1, 0, self.cols - 1)
     
     def _update_x(self, node_x: int, node_y: int, start_y: int, end_y: int, y: int, value: int) -> None:
         """Update in the x-direction."""
