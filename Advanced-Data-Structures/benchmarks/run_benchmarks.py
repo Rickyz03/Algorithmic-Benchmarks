@@ -30,9 +30,9 @@ from union_find import UnionFind, UnionFindWithRollback
 
 # Import variants
 try:
-    from segment_tree import LazySegmentTree, RangeSumLazySegmentTree
-    from fenwick_tree import RangeUpdateFenwickTree, FenwickTreeWithFrequencies
-    from union_find import UnionFindOptimized, DynamicConnectivity
+    from segment_tree_variant import LazySegmentTree, RangeSumLazySegmentTree
+    from fenwick_tree_variant import RangeUpdateFenwickTree, FenwickTreeWithFrequencies
+    from union_finds_variant import UnionFindOptimized, DynamicConnectivity
 except ImportError as e:
     print(f"Warning: Could not import some variants: {e}")
 

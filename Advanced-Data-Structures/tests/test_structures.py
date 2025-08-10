@@ -24,9 +24,9 @@ try:
     from union_find import UnionFind, WeightedUnionFind, UnionFindWithRollback
     
     # Variants
-    from segment_tree import LazySegmentTree, RangeSumLazySegmentTree, SegmentTree2D, PersistentSegmentTree
-    from fenwick_tree import RangeUpdateFenwickTree, FenwickTree2DAdvanced, CoordinateCompressedFenwick
-    from union_find import UnionFindOptimized, PersistentUnionFind, DynamicConnectivity
+    from segment_tree_variant import LazySegmentTree, RangeSumLazySegmentTree, SegmentTree2D, PersistentSegmentTree
+    from fenwick_tree_variant import RangeUpdateFenwickTree, FenwickTree2DAdvanced, CoordinateCompressedFenwick
+    from union_finds_variant import UnionFindOptimized, PersistentUnionFind, DynamicConnectivity
 except ImportError as e:
     print(f"Import error: {e}")
     print("Make sure all modules are in the correct directories")
