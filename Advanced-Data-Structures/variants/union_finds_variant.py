@@ -98,6 +98,18 @@ class UnionFindOptimized:
         
         return True
     
+    def connected(self, x: int, y: int) -> bool:
+        """
+        Check if two elements are in the same component.
+        
+        Args:
+            x, y: Elements to check
+            
+        Returns:
+            True if x and y are in the same component, False otherwise
+        """
+        return self.find(x) == self.find(y)
+    
     def set_component_data(self, x: int, data: Any) -> None:
         """Associate custom data with a component."""
         root = self.find(x)
