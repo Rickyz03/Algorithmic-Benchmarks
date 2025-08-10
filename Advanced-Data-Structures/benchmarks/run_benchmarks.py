@@ -571,19 +571,24 @@ class DataStructureBenchmark:
             # Calculate scaling factor
             if len(results) >= 2:
                 size_ratio = results[-1].size / results[0].size
-                time_ratio = results[-1].time_per_op / results[0].time_per_op
                 
-                import math
-                if size_ratio > 1:
-                    complexity_factor = math.log(time_ratio) / math.log(size_ratio)
-                    print(f"  Complexity scaling: O(n^{complexity_factor:.2f})")
+                # Avoid division by zero
+                if results[0].time_per_op > 0 and results[-1].time_per_op > 0:
+                    time_ratio = results[-1].time_per_op / results[0].time_per_op
                     
-                    if 0.8 <= complexity_factor <= 1.2:
-                        print("  → Close to O(n) scaling")
-                    elif 0.8 <= complexity_factor <= 1.2:
-                        print("  → Close to O(log n) scaling")
-                    elif 1.8 <= complexity_factor <= 2.2:
-                        print("  → Close to O(n log n) scaling")
+                    import math
+                    if size_ratio > 1:
+                        complexity_factor = math.log(time_ratio) / math.log(size_ratio)
+                        print(f"  Complexity scaling: O(n^{complexity_factor:.2f})")
+                        
+                        if 0.8 <= complexity_factor <= 1.2:
+                            print("  → Close to O(n) scaling")
+                        elif 0.8 <= complexity_factor <= 1.2:
+                            print("  → Close to O(log n) scaling")
+                        elif 1.8 <= complexity_factor <= 2.2:
+                            print("  → Close to O(n log n) scaling")
+                else:
+                    print("  Complexity scaling: Unable to calculate (zero time measurements)")
             
             # Performance trend
             best_size = min(results, key=lambda x: x.time_per_op).size
