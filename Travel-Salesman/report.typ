@@ -148,15 +148,15 @@ This classical algorithm provides a solution guaranteed to be at most twice the 
 
 *Theoretical Analysis:*
 
-Let $OPT$ be the cost of an optimal TSP tour and $MST$ be the cost of the minimum spanning tree.
+Let $"OPT"$ be the cost of an optimal TSP tour and $"MST"$ be the cost of the minimum spanning tree.
 
-- *Lower Bound:* $MST ≤ OPT$ because removing any edge from an optimal tour yields a spanning tree.
+- *Lower Bound:* $"MST" ≤ "OPT"$ because removing any edge from an optimal tour yields a spanning tree.
 
-- *Algorithm Cost:* The DFS traversal visits each edge of the MST exactly twice (once down, once up), so the "doubling" tour has cost $2 · MST$.
+- *Algorithm Cost:* The DFS traversal visits each edge of the MST exactly twice (once down, once up), so the "doubling" tour has cost $2 · "MST"$.
 
 - *Shortcutting:* Using the triangle inequality, we can shortcut the doubled tour to visit each vertex exactly once without increasing the total cost.
 
-- *Approximation Ratio:* $ALG ≤ 2 · MST ≤ 2 · OPT$
+- *Approximation Ratio:* $"ALG" ≤ 2 · "MST" ≤ 2 · "OPT"$
 
 *Time Complexity:* $O(n^2)$ for dense graphs  
 *Space Complexity:* $O(n)$
@@ -255,8 +255,8 @@ We generate two types of TSP instances to evaluate algorithm performance:
 === Solution Quality
 
 *Approximation Ratio:* For each instance, we define the approximation ratio as:
-$ r_(ALG) = (L_(ALG))/(L_(OPT)) $
-where $L_(ALG)$ is the tour length found by algorithm ALG and $L_(OPT)$ is the optimal tour length.
+$ r_("ALG") = (L_("ALG"))/(L_("OPT")) $
+where $L_("ALG")$ is the tour length found by algorithm ALG and $L_("OPT")$ is the optimal tour length.
 
 *Relative Performance:* When optimal solutions are unknown (large instances), we compare against the best known solution across all tested algorithms.
 
