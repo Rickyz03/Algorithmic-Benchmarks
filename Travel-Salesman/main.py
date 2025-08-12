@@ -5,6 +5,8 @@ This script provides an interactive interface for running different TSP algorith
 comparing their performance, and visualizing the results.
 """
 
+OUTPUT_DIR = "output/"
+
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
@@ -438,13 +440,13 @@ def interactive_demo():
                 results_df = run_scaling_experiment(sizes, instance_type, num_instances)
                 
                 # Save results
-                results_df.to_csv('scaling_results.csv', index=False)
-                print(f"Results saved to scaling_results.csv")
-                
+                results_df.to_csv(f'{OUTPUT_DIR}scaling_results.csv', index=False)
+                print(f"Results saved to {OUTPUT_DIR}scaling_results.csv")
+
                 # Plot results
-                plot_scaling_results(results_df, 'scaling_plot.png')
-                print(f"Plot saved to scaling_plot.png")
-            
+                plot_scaling_results(results_df, f'{OUTPUT_DIR}scaling_plot.png')
+                print(f"Plot saved to {OUTPUT_DIR}scaling_plot.png")
+
             elif choice == '3':
                 # Custom coordinates
                 print("Enter city coordinates (x,y). Empty line to finish:")
@@ -589,13 +591,13 @@ def main():
         )
         
         # Save and plot results
-        results_df.to_csv('scaling_results.csv', index=False)
-        print(f"Results saved to scaling_results.csv")
-        
+        results_df.to_csv(f'{OUTPUT_DIR}scaling_results.csv', index=False)
+        print(f"Results saved to {OUTPUT_DIR}scaling_results.csv")
+
         if not args.no_viz:
-            plot_scaling_results(results_df, 'scaling_plot.png')
-            print(f"Plot saved to scaling_plot.png")
-        
+            plot_scaling_results(results_df, f'{OUTPUT_DIR}scaling_plot.png')
+            print(f"Plot saved to {OUTPUT_DIR}scaling_plot.png")
+
         # Print summary statistics
         successful_df = results_df[results_df['status'] == 'success']
         if len(successful_df) > 0:
