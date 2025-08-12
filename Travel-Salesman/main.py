@@ -230,3 +230,388 @@ def run_algorithm_comparison(size: int, instance_type: str = 'euclidean',
             plt.tight_layout()
             plt.savefig(f'tsp_comparison_{size}_cities.png', dpi=300, bbox_inches='tight')
             plt.show()
+    
+    return results
+
+
+def run_scaling_experiment(sizes: List[int], instance_type: str = 'euclidean', 
+                          num_instances: int = 3, timeout: float = 30.0) -> pd.DataFrame:
+    """
+    Run scaling experiment across different problem sizes.
+    
+    Args:
+        sizes: List of problem sizes to test
+        instance_type: Type of instances ('euclidean' or 'metric')
+        num_instances: Number of instances per size
+        timeout: Timeout per algorithm run in seconds
+        
+    Returns:
+        DataFrame with scaling results
+    """
+    print(f"Running scaling experiment...")
+    print(f"Sizes: {sizes}")
+    print(f"Instances per size: {num_instances}")
+    print(f"Instance type: {instance_type}")
+    
+    results = []
+    
+    for size in sizes:
+        print(f"\n{'='*60}")
+        print(f"Testing size: {size}")
+        print(f"{'='*60}")
+        
+        for instance_idx in range(num_instances):
+            print(f"\nInstance {instance_idx + 1}/{num_instances}")
+            
+            # Generate instance
+            seed = 42 + instance_idx
+            if instance_type == 'euclidean':
+                distance_matrix, coordinates = generate_euclidean_tsp_instance(size, seed)
+            else:
+                distance_matrix = generate_metric_tsp_instance(size, seed)
+                coordinates = None
+            
+            # Define algorithms based on size
+            test_algorithms = []
+            
+            if size <= 8:
+                test_algorithms.append(('Brute Force', brute_force_tsp))
+            if size <= 15:
+                test_algorithms.append(('Held-Karp DP', held_karp_tsp))
+            if size <= 12:
+                test_algorithms.append(('Branch & Bound', lambda dm: BranchAndBound(dm).solve()))
+            
+            # Always test these
+            test_algorithms.extend([
+                ('MST 2-Approximation', mst_2_approximation),
+                ('Nearest Neighbor', lambda dm: nearest_neighbor_tsp(dm, 0)),
+                ('Multi-start NN', multi_start_nearest_neighbor),
+                ('NN + 2-opt', lambda dm: nearest_neighbor_with_2opt(dm, 0)),
+                ('Multi-start NN + 2-opt', multi_start_nn_with_2opt)
+            ])
+            
+            # Test each algorithm
+            for alg_name, algorithm in test_algorithms:
+                try:
+                    import time
+                    start_time = time.time()
+                    tour, length = algorithm(distance_matrix)
+                    end_time = time.time()
+                    elapsed_time = end_time - start_time
+                    
+                    if elapsed_time > timeout:
+                        status = 'timeout'
+                        tour = None
+                        length = None
+                    else:
+                        status = 'success'
+                    
+                    results.append({
+                        'algorithm': alg_name,
+                        'size': size,
+                        'instance_idx': instance_idx,
+                        'seed': seed,
+                        'tour_length': length,
+                        'execution_time': elapsed_time,
+                        'status': status,
+                        'instance_type': instance_type
+                    })
+                    
+                    print(f"  {alg_name:20s}: {length:8.2f} ({elapsed_time:.3f}s)")
+                    
+                except Exception as e:
+                    results.append({
+                        'algorithm': alg_name,
+                        'size': size,
+                        'instance_idx': instance_idx,
+                        'seed': seed,
+                        'tour_length': None,
+                        'execution_time': None,
+                        'status': f'error_{str(e)[:20]}',
+                        'instance_type': instance_type
+                    })
+                    print(f"  {alg_name:20s}: ERROR - {str(e)}")
+    
+    return pd.DataFrame(results)
+
+
+def plot_scaling_results(df: pd.DataFrame, save_path: Optional[str] = None):
+    """Plot scaling experiment results."""
+    successful_df = df[df['status'] == 'success'].copy()
+    
+    if len(successful_df) == 0:
+        print("No successful results to plot.")
+        return
+    
+    # Group by algorithm and size, calculate means
+    grouped = successful_df.groupby(['algorithm', 'size']).agg({
+        'execution_time': 'mean',
+        'tour_length': 'mean'
+    }).reset_index()
+    
+    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(15, 6))
+    
+    # Plot 1: Execution time vs size
+    for algorithm in grouped['algorithm'].unique():
+        alg_data = grouped[grouped['algorithm'] == algorithm]
+        ax1.plot(alg_data['size'], alg_data['execution_time'], 
+                marker='o', label=algorithm, linewidth=2)
+    
+    ax1.set_xlabel('Problem Size (number of cities)')
+    ax1.set_ylabel('Average Execution Time (seconds)')
+    ax1.set_title('Algorithm Scalability: Execution Time vs Problem Size')
+    ax1.set_yscale('log')
+    ax1.legend()
+    ax1.grid(True, alpha=0.3)
+    
+    # Plot 2: Solution quality vs size
+    for algorithm in grouped['algorithm'].unique():
+        alg_data = grouped[grouped['algorithm'] == algorithm]
+        ax2.plot(alg_data['size'], alg_data['tour_length'], 
+                marker='o', label=algorithm, linewidth=2)
+    
+    ax2.set_xlabel('Problem Size (number of cities)')
+    ax2.set_ylabel('Average Tour Length')
+    ax2.set_title('Algorithm Scalability: Solution Quality vs Problem Size')
+    ax2.legend()
+    ax2.grid(True, alpha=0.3)
+    
+    plt.tight_layout()
+    
+    if save_path:
+        plt.savefig(save_path, dpi=300, bbox_inches='tight')
+    
+    plt.show()
+
+
+def interactive_demo():
+    """Run interactive demo allowing user to test different configurations."""
+    print("\n" + "="*60)
+    print("TSP ALGORITHM COMPARISON - INTERACTIVE DEMO")
+    print("="*60)
+    
+    while True:
+        print("\nOptions:")
+        print("1. Compare algorithms on single instance")
+        print("2. Run scaling experiment")
+        print("3. Test with custom coordinates")
+        print("4. Exit")
+        
+        try:
+            choice = input("\nSelect option (1-4): ").strip()
+            
+            if choice == '1':
+                # Single instance comparison
+                size = int(input("Enter number of cities (4-50): "))
+                if size < 4 or size > 50:
+                    print("Size must be between 4 and 50")
+                    continue
+                
+                instance_type = input("Instance type (euclidean/metric) [euclidean]: ").strip()
+                if not instance_type:
+                    instance_type = 'euclidean'
+                
+                seed = input("Random seed [42]: ").strip()
+                seed = int(seed) if seed else 42
+                
+                visualize = input("Create visualizations? (y/n) [y]: ").strip()
+                visualize = visualize.lower() != 'n'
+                
+                run_algorithm_comparison(size, instance_type, seed, visualize)
+            
+            elif choice == '2':
+                # Scaling experiment
+                sizes_input = input("Enter sizes (comma-separated) [5,6,7,8,10]: ").strip()
+                if not sizes_input:
+                    sizes = [5, 6, 7, 8, 10]
+                else:
+                    sizes = [int(x.strip()) for x in sizes_input.split(',')]
+                
+                instance_type = input("Instance type (euclidean/metric) [euclidean]: ").strip()
+                if not instance_type:
+                    instance_type = 'euclidean'
+                
+                num_instances = input("Instances per size [3]: ").strip()
+                num_instances = int(num_instances) if num_instances else 3
+                
+                print(f"\nRunning scaling experiment...")
+                results_df = run_scaling_experiment(sizes, instance_type, num_instances)
+                
+                # Save results
+                results_df.to_csv('scaling_results.csv', index=False)
+                print(f"Results saved to scaling_results.csv")
+                
+                # Plot results
+                plot_scaling_results(results_df, 'scaling_plot.png')
+                print(f"Plot saved to scaling_plot.png")
+            
+            elif choice == '3':
+                # Custom coordinates
+                print("Enter city coordinates (x,y). Empty line to finish:")
+                coordinates = []
+                i = 0
+                
+                while True:
+                    coord_input = input(f"City {i} (x,y): ").strip()
+                    if not coord_input:
+                        break
+                    
+                    try:
+                        x, y = map(float, coord_input.split(','))
+                        coordinates.append((x, y))
+                        i += 1
+                    except ValueError:
+                        print("Invalid format. Use: x,y")
+                
+                if len(coordinates) < 3:
+                    print("Need at least 3 cities")
+                    continue
+                
+                # Create distance matrix from coordinates
+                from utils.graph_generator import coordinates_to_distance_matrix
+                distance_matrix = coordinates_to_distance_matrix(coordinates)
+                
+                # Run comparison with custom coordinates
+                size = len(coordinates)
+                results = {}
+                
+                algorithms = [
+                    ('MST 2-Approximation', mst_2_approximation),
+                    ('Nearest Neighbor', lambda dm: nearest_neighbor_tsp(dm, 0)),
+                    ('NN + 2-opt', lambda dm: nearest_neighbor_with_2opt(dm, 0)),
+                    ('Multi-start NN + 2-opt', multi_start_nn_with_2opt)
+                ]
+                
+                if size <= 8:
+                    algorithms.insert(0, ('Brute Force', brute_force_tsp))
+                if size <= 15:
+                    algorithms.insert(0, ('Held-Karp DP', held_karp_tsp))
+                
+                print(f"\nRunning algorithms on {size} custom cities:")
+                print("-" * 40)
+                
+                for name, algorithm in algorithms:
+                    try:
+                        import time
+                        start_time = time.time()
+                        tour, length = algorithm(distance_matrix)
+                        end_time = time.time()
+                        
+                        print(f"{name:20s}: {length:8.2f} ({end_time - start_time:.3f}s)")
+                        results[name] = (tour, length)
+                        
+                    except Exception as e:
+                        print(f"{name:20s}: ERROR - {str(e)}")
+                
+                # Visualize best result
+                if results:
+                    best_alg = min(results.keys(), key=lambda k: results[k][1])
+                    best_tour, best_length = results[best_alg]
+                    
+                    print(f"\nBest result: {best_alg} with length {best_length:.2f}")
+                    
+                    fig, ax = plt.subplots(1, 1, figsize=(8, 6))
+                    title = f"Custom Instance - {best_alg}\nLength: {best_length:.2f}"
+                    visualize_tour(coordinates, best_tour, title, ax)
+                    plt.show()
+            
+            elif choice == '4':
+                print("Goodbye!")
+                break
+            
+            else:
+                print("Invalid choice. Please select 1-4.")
+        
+        except KeyboardInterrupt:
+            print("\nGoodbye!")
+            break
+        except Exception as e:
+            print(f"Error: {str(e)}")
+
+
+def parse_arguments():
+    """Parse command line arguments."""
+    parser = argparse.ArgumentParser(description='TSP Algorithm Comparison Tool')
+    
+    parser.add_argument('--mode', choices=['compare', 'scale', 'interactive'], 
+                       default='interactive',
+                       help='Execution mode (default: interactive)')
+    
+    parser.add_argument('--size', type=int, default=8,
+                       help='Number of cities for comparison mode (default: 8)')
+    
+    parser.add_argument('--sizes', type=str, default='5,6,7,8',
+                       help='Comma-separated sizes for scaling mode (default: 5,6,7,8)')
+    
+    parser.add_argument('--type', choices=['euclidean', 'metric'], default='euclidean',
+                       help='Instance type (default: euclidean)')
+    
+    parser.add_argument('--seed', type=int, default=42,
+                       help='Random seed (default: 42)')
+    
+    parser.add_argument('--instances', type=int, default=3,
+                       help='Number of instances per size for scaling mode (default: 3)')
+    
+    parser.add_argument('--no-viz', action='store_true',
+                       help='Disable visualizations')
+    
+    parser.add_argument('--timeout', type=float, default=30.0,
+                       help='Timeout for each algorithm run in seconds (default: 30.0)')
+    
+    return parser.parse_args()
+
+
+def main():
+    """Main execution function."""
+    args = parse_arguments()
+    
+    print("TSP Algorithm Comparison Tool")
+    print("="*50)
+    
+    if args.mode == 'compare':
+        print(f"Mode: Single instance comparison")
+        run_algorithm_comparison(
+            size=args.size,
+            instance_type=args.type,
+            seed=args.seed,
+            visualize=not args.no_viz
+        )
+    
+    elif args.mode == 'scale':
+        print(f"Mode: Scaling experiment")
+        sizes = [int(x.strip()) for x in args.sizes.split(',')]
+        
+        results_df = run_scaling_experiment(
+            sizes=sizes,
+            instance_type=args.type,
+            num_instances=args.instances,
+            timeout=args.timeout
+        )
+        
+        # Save and plot results
+        results_df.to_csv('scaling_results.csv', index=False)
+        print(f"Results saved to scaling_results.csv")
+        
+        if not args.no_viz:
+            plot_scaling_results(results_df, 'scaling_plot.png')
+            print(f"Plot saved to scaling_plot.png")
+        
+        # Print summary statistics
+        successful_df = results_df[results_df['status'] == 'success']
+        if len(successful_df) > 0:
+            print(f"\nSummary Statistics:")
+            print(f"Total runs: {len(results_df)}")
+            print(f"Successful runs: {len(successful_df)}")
+            print(f"Success rate: {len(successful_df) / len(results_df):.1%}")
+            
+            print(f"\nAverage execution times by algorithm:")
+            time_stats = successful_df.groupby('algorithm')['execution_time'].mean().sort_values()
+            for alg, avg_time in time_stats.items():
+                print(f"  {alg:25s}: {avg_time:.4f}s")
+    
+    elif args.mode == 'interactive':
+        interactive_demo()
+
+
+if __name__ == '__main__':
+    main()
