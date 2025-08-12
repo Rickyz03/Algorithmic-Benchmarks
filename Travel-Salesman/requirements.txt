@@ -22,3 +22,7 @@ line-profiler>=3.3.0      # Line-by-line profiling
 # Jupyter notebook support (optional)
 jupyter>=1.0.0
 ipywidgets>=7.6.0
+
+
+# Maximum Python version compatibility: 
+# Latest, even 3.13 works
